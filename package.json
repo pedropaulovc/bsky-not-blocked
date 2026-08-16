@@ -9,7 +9,13 @@
     "build": "node scripts/build.mjs",
     "test": "node --test 'test/*.test.mjs'",
     "test:live": "BSKY_NOT_BLOCKED_LIVE=1 node --test 'test/*.test.mjs'",
+    "test:e2e": "node scripts/build.mjs chrome && node test/e2e.mjs",
+    "lint:firefox": "node scripts/build.mjs firefox && web-ext lint --source-dir=dist/firefox --self-hosted",
     "record-fixtures": "node scripts/record-fixtures.mjs",
     "icons": "bash scripts/make-icons.sh"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1",
+    "web-ext": "^10.6.0"
   }
 }

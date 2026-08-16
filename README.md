@@ -29,7 +29,7 @@ No dependencies and no build tooling — the script copies `src/` next to the ri
 
 **Chrome / Edge / Brave** — `chrome://extensions` → enable Developer mode → *Load unpacked* → `dist/chrome`.
 
-**Firefox** — `about:debugging#/runtime/this-firefox` → *Load Temporary Add-on* → `dist/firefox/manifest.json`. Temporary add-ons are removed when Firefox restarts; a permanently installed copy needs Mozilla signing, which this repo does not do for you.
+**Firefox 140+** — `about:debugging#/runtime/this-firefox` → *Load Temporary Add-on* → `dist/firefox/manifest.json`. Temporary add-ons are removed when Firefox restarts; a permanently installed copy needs Mozilla signing, which this repo does not do for you.
 
 Then open a Bluesky thread. There is nothing to configure for the default behaviour.
 
@@ -44,6 +44,18 @@ curl "https://public.api.bsky.app/xrpc/app.bsky.feed.getPosts?uris=at://did:plc:
 So the extension patches `window.fetch` in the page, watches for XRPC responses containing blocked stubs, resolves them in one batched call, and splices the real posts back into the response. The app renders them natively because by the time it sees the data, nothing is marked blocked.
 
 That claim about the API is the load-bearing one, so it has a re-runnable check rather than a comment: `npm run test:live`.
+
+### Why the content script must run at `document_start`
+
+Bluesky's bundle snapshots fetch into a module constant the moment it evaluates:
+
+```js
+let P = globalThis.fetch
+```
+
+So patching fetch *after* the app has loaded does nothing at all — the app goes on using the reference it already took. The extension works only because a `world: "MAIN"` content script at `run_at: "document_start"` runs before the bundle does, which means it is the patched fetch that gets snapshotted.
+
+That ordering is invisible to the unit tests and easy to break, so it has its own browser-driven check: `npm run test:e2e`.
 
 ## Recover hidden replies (off by default)
 
@@ -64,13 +76,17 @@ It is opt-in because it sends post URIs to a third party. With it off, the exten
 ## Development
 
 ```sh
+npm run build             # dist/{chrome,firefox} plus zips — no dependencies needed
 npm test                  # offline, against recorded API fixtures
 npm run test:live         # re-checks the API assumptions against Bluesky
-npm run build             # dist/{chrome,firefox} plus zips
+npm run test:e2e          # loads the built extension into Chrome, hits the real site
+npm run lint:firefox      # web-ext lint on the Firefox build
 npm run record-fixtures   # refresh fixtures after an API change
 ```
 
-The tests load `src/interceptor.js` itself into a sandboxed page-like context, so they exercise the file that ships rather than a copy of its logic.
+Building needs nothing installed. The tests beyond `npm test` need `npm i` (Playwright for the end-to-end run, `web-ext` for the Firefox lint).
+
+`npm test` loads `src/interceptor.js` itself into a sandboxed page-like context, so it exercises the file that ships rather than a copy of its logic.
 
 ## License
 
