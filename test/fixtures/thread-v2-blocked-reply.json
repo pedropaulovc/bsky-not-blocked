@@ -29,11 +29,11 @@
               }
             },
             "labels": [],
-            "createdAt": "2025-01-25T06:00:06.543Z"
+            "createdAt": "2020-01-01T00:16:00.000Z"
           },
           "record": {
             "$type": "app.bsky.feed.post",
-            "createdAt": "2026-08-15T21:39:02.569Z",
+            "createdAt": "2020-01-01T01:20:00.000Z",
             "langs": [
               "en"
             ],
@@ -54,7 +54,7 @@
           "repostCount": 0,
           "likeCount": 0,
           "quoteCount": 0,
-          "indexedAt": "2026-08-15T21:39:03.378Z",
+          "indexedAt": "2020-01-01T01:21:00.000Z",
           "labels": []
         },
         "moreParents": false,

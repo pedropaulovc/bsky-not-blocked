@@ -136,6 +136,8 @@ const pad = (n, width) => String(n).padStart(width, '0');
 
 // did:plc identifiers are 24 characters after the prefix.
 const fakeDid = (value) => alias('did', value, (n) => `did:plc:${'a'.repeat(20)}${pad(n, 4)}`);
+// did:web identifiers embed the account's own domain, so they need replacing too.
+const fakeWebDid = (value) => alias('did', value, (n) => `did:web:host${pad(n, 4)}.example`);
 // Record keys are 13-character TIDs.
 const fakeRkey = (value) => alias('rkey', value, (n) => `3${'a'.repeat(8)}${pad(n, 4)}`);
 const fakeCid = (value) => alias('cid', value, (n) => `bafyrei${'a'.repeat(45)}${pad(n, 4)}`);
@@ -158,10 +160,43 @@ function collectHandles(node, found = new Set()) {
 function rewriteString(value, handles) {
   let out = value
     .replace(/did:plc:[a-z0-9]+/g, (did) => fakeDid(did))
+    .replace(/did:web:[a-zA-Z0-9.:%-]+/g, (did) => fakeWebDid(did))
     .replace(/\bbaf[a-z0-9]{20,}/g, (cid) => fakeCid(cid))
     .replace(/(app\.bsky\.[a-z.]+\/)([a-z0-9]{13})/g, (_, prefix, rkey) => prefix + fakeRkey(rkey));
   for (const handle of handles) out = out.split(handle).join(fakeHandle(handle));
   return out;
+}
+
+/*
+ * Timestamps are identifying on their own. An account's `createdAt` is
+ * millisecond-precision and served publicly by the AppView, so it maps an
+ * otherwise anonymous author straight back to the real account.
+ *
+ * They are assigned in chronological order rather than order of appearance, so
+ * the fixtures keep the same relative ordering the live data had.
+ */
+const ISO_TIMESTAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
+const SYNTHETIC_EPOCH = Date.UTC(2020, 0, 1);
+const timestamps = new Map();
+
+function planTimestamps(node, found = new Set()) {
+  if (Array.isArray(node)) {
+    for (const child of node) planTimestamps(child, found);
+    return found;
+  }
+  if (typeof node === 'string') {
+    if (ISO_TIMESTAMP.test(node)) found.add(node);
+    return found;
+  }
+  if (!node || typeof node !== 'object') return found;
+  for (const key of Object.keys(node)) planTimestamps(node[key], found);
+  return found;
+}
+
+function sealTimestamps(found) {
+  [...found].sort().forEach((value, index) => {
+    timestamps.set(value, new Date(SYNTHETIC_EPOCH + index * 60_000).toISOString());
+  });
 }
 
 const fakeUrl = (value) => alias('url', value, (n) => `https://example.com/link/${pad(n, 4)}`);
@@ -194,6 +229,7 @@ function anonymize(node, handles) {
   const out = {};
   for (const [key, value] of Object.entries(node)) {
     if (typeof value !== 'string' || !value) out[key] = anonymize(value, handles);
+    else if (timestamps.has(value)) out[key] = timestamps.get(value);
     else if (STRUCTURAL_KEYS.has(key)) out[key] = rewriteString(value, handles);
     else if (key === 'handle') out[key] = fakeHandle(value);
     else if (key === 'displayName') out[key] = fakeName(value);
@@ -209,6 +245,11 @@ function assertClean(label, data) {
   const leaks = [
     ...(json.match(/https?:\\?\/\\?\/(?!cdn\.bsky\.app\/img\/|example\.com\/link\/)[^"\\]+/g) ?? []),
     ...(json.match(/did:plc:(?!a{20}\d{4})[a-z0-9]+/g) ?? []),
+    ...(json.match(/did:web:(?!host\d{4}\.example)[a-zA-Z0-9.:%-]+/g) ?? []),
+    // Anything still on a real clock rather than the synthetic epoch.
+    ...(json.match(/"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z"/g) ?? []).filter(
+      (stamp) => !stamp.startsWith('"2020-'),
+    ),
   ];
   if (leaks.length) {
     throw new Error(`${label} still contains live data: ${[...new Set(leaks)].slice(0, 5).join(', ')}`);
@@ -234,7 +275,16 @@ for (const { file, method, payload } of captured) {
 // Handles are gathered across everything first so a mention inside one payload
 // is rewritten the same way as the profile it refers to in another.
 const everything = [...captured.map((c) => c.payload), posts];
-const handles = [...collectHandles(everything)].sort((a, b) => b.length - a.length);
+
+// Aliases are issued in appearance order so re-recording does not churn the
+// diff; replacement then runs longest-first so one handle is never rewritten
+// inside another. Sorting the list used for both would tie the numbering to
+// handle length, and one account renaming would rewrite every fixture.
+const discovered = [...collectHandles(everything)];
+for (const handle of discovered) fakeHandle(handle);
+const handles = [...discovered].sort((a, b) => b.length - a.length);
+
+sealTimestamps(planTimestamps(everything));
 
 for (const { file, payload } of captured) write(file, anonymize(payload, handles));
 

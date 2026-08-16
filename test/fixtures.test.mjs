@@ -44,6 +44,20 @@ test('no fixture contains a real DID', () => {
     for (const did of read(name).match(/did:plc:[a-z0-9]+/g) ?? []) {
       assert.match(did, SYNTHETIC_DID, `${name} leaks a live DID`);
     }
+    // did:web embeds the account's own domain, so it leaks even more directly.
+    for (const did of read(name).match(/did:web:[a-zA-Z0-9.:%-]+/g) ?? []) {
+      assert.match(did, /^did:web:host\d{4}\.example$/, `${name} leaks a live did:web domain`);
+    }
+  }
+});
+
+test('no fixture carries a real timestamp', () => {
+  // An account's createdAt is millisecond-precision and public, so on its own it
+  // maps an anonymized author back to the real account.
+  for (const name of files) {
+    for (const stamp of read(name).match(/"\d{4}-\d{2}-\d{2}T[\d:.]+Z"/g) ?? []) {
+      assert.match(stamp, /^"2020-01-\d{2}T\d{2}:\d{2}:00\.000Z"$/, `${name} leaks a live timestamp`);
+    }
   }
 });
 
