@@ -24,10 +24,27 @@ import { chromium } from 'playwright';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const EXTENSION = path.join(ROOT, 'dist', 'chrome');
-const POST = 'https://bsky.app/profile/ed3d.net/post/3mt5jmqs4n22n';
-// The post hidden behind the "Blocked" card on that thread.
-const HIDDEN_HANDLE = '@skity.bsky.social';
-const HIDDEN_TEXT = 'Coding is largely solved';
+
+/*
+ * Two scenarios, because the two stub kinds are spliced into different shapes
+ * and only a real browser proves Bluesky renders each of them.
+ */
+const SCENARIOS = [
+  {
+    name: 'blocked quote embed',
+    url: 'https://bsky.app/profile/ed3d.net/post/3mt5jmqs4n22n',
+    // ed3d.net quotes skity.bsky.social; the two accounts block each other.
+    expect: ['@skity.bsky.social', 'Coding is largely solved'],
+    // The grey placeholder that stands in for the quote when it is hidden.
+    absent: 'Blocked',
+  },
+  {
+    name: 'blocked parent in a thread',
+    url: 'https://bsky.app/profile/skity.bsky.social/post/3mt5n422h422o',
+    // The parent is by aly.codes, who skity blocks, so it is dropped for everyone.
+    expect: ['@aly.codes', 'extremely normal analogy'],
+  },
+];
 
 if (!fs.existsSync(EXTENSION)) throw new Error('run `node scripts/build.mjs` first');
 
@@ -44,34 +61,52 @@ const context = await chromium.launchPersistentContext(profile, {
 });
 
 try {
-  const page = await context.newPage();
-  await page.goto(POST, { waitUntil: 'domcontentloaded' });
+  for (const scenario of SCENARIOS) {
+    console.log(`\n# ${scenario.name}`);
+    const page = await context.newPage();
+    await page.goto(scenario.url, { waitUntil: 'domcontentloaded' });
 
-  // 1. The content script reached the page world at all.
-  await page.waitForFunction(() => Boolean(window.__bskyNotBlocked), null, { timeout: 20_000 });
-  check('interceptor is installed in the page world', true);
+    // 1. The content script reached the page world at all.
+    await page.waitForFunction(() => Boolean(window.__bskyNotBlocked), null, { timeout: 20_000 });
+    check('interceptor is installed in the page world', true);
 
-  // 2. It won the race against the app's `let P = globalThis.fetch` snapshot.
-  await page.waitForFunction(
-    () => {
-      const s = window.__bskyNotBlocked?.stats;
-      return s && s.restoredQuotes + s.restoredPosts > 0;
-    },
-    null,
-    { timeout: 30_000 },
-  );
-  const stats = await page.evaluate(() => ({ ...window.__bskyNotBlocked.stats }));
-  check('interceptor patched fetch before the app captured it', true, JSON.stringify(stats));
+    // 2. It won the race against the app's `let P = globalThis.fetch` snapshot.
+    // If it lost, the app would be using the original fetch and nothing is restored.
+    await page.waitForFunction(
+      () => {
+        const s = window.__bskyNotBlocked?.stats;
+        return s && s.restoredQuotes + s.restoredPosts > 0;
+      },
+      null,
+      { timeout: 30_000 },
+    );
+    const stats = await page.evaluate(() => ({ ...window.__bskyNotBlocked.stats }));
+    check('interceptor patched fetch before the app captured it', true, JSON.stringify(stats));
 
-  // 3. Bluesky rendered the restored post natively.
-  const body = await page.locator('body').innerText();
-  check('the hidden post\'s author is rendered', body.includes(HIDDEN_HANDLE), HIDDEN_HANDLE);
-  check('the hidden post\'s text is rendered', body.includes(HIDDEN_TEXT), `"${HIDDEN_TEXT}"`);
-  check('no "Blocked" placeholder remains on the focused post', !body.includes('Blocked'));
+    // 3. Bluesky rendered the restored post natively. Rewriting the response and
+    // painting it are separate events, so this waits rather than reads once.
+    for (const needle of scenario.expect) {
+      const rendered = await page
+        .waitForFunction((text) => document.body.innerText.includes(text), needle, { timeout: 30_000 })
+        .then(() => true, () => false);
+      check(`renders "${needle}"`, rendered);
+    }
+    if (scenario.absent) {
+      const body = await page.locator('body').innerText();
+      check(`no "${scenario.absent}" placeholder remains`, !body.includes(scenario.absent));
+    }
 
-  const shot = path.join(ROOT, 'dist', 'e2e-restored.png');
-  await page.screenshot({ path: shot, fullPage: false });
-  console.log(`\nscreenshot: ${path.relative(ROOT, shot)}`);
+    // Bluesky anchors the scroll on the focused post, which can leave a restored
+    // parent just above the viewport; scroll up so the screenshot shows it.
+    await page.mouse.move(520, 400);
+    await page.mouse.wheel(0, -3000);
+    await page.waitForTimeout(500);
+
+    const shot = path.join(ROOT, 'dist', `e2e-${scenario.name.replace(/\W+/g, '-')}.png`);
+    await page.screenshot({ path: shot });
+    console.log(`screenshot: ${path.relative(ROOT, shot)}`);
+    await page.close();
+  }
 } finally {
   await context.close();
   fs.rmSync(profile, { recursive: true, force: true });
