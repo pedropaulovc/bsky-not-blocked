@@ -133,20 +133,25 @@ category:
 > **Decide this before submitting.** Deep recovery, when the user switches it on,
 > sends the URI of the post being viewed to `constellation.microcosm.blue`, a
 > third party. Nobody collects it on our side, but a strict reading of Chrome's
-> "web history" and AMO's `websiteActivity` categories covers *transmitting* it,
+> "web history" and AMO's `browsingActivity` categories covers *transmitting* it,
 > and all three stores treat an under-declaration far more harshly than an
 > over-declaration. Two defensible options:
 >
-> 1. Declare it. On AMO that means adding `optional: ["websiteActivity"]` to
+> 1. Declare it. On AMO that means adding `optional: ["browsingActivity"]` to
 >    `data_collection_permissions`; on Chrome and Edge, disclose it as web-history
 >    data used solely for the extension's single purpose, never sold or transferred.
 > 2. Argue it is out of scope, on the grounds that the feature is off by default
 >    and the request carries a public record address rather than anything about
 >    the user.
 >
-> Option 1 is the safer submission and costs a line in the manifest. Either way
-> the behaviour is already described in the description above, so the listing text
-> does not change.
+> Option 1 is the safer submission. Note it is not purely a manifest line: done
+> properly on Firefox, an `optional` data permission is also requested at runtime
+> via `browser.permissions.request({ data_collection: ["browsingActivity"] })`
+> when the user switches deep recovery on, which is what actually produces the
+> consent prompt. Declaring it without requesting it is harmless but pointless.
+>
+> Either way the listing text does not change — the behaviour is already spelled
+> out in the description above.
 
 ---
 
