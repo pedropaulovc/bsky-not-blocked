@@ -120,38 +120,27 @@ content scripts, both matched to `https://bsky.app/*` and nothing else.
 
 ## Data collection disclosure
 
-The extension collects nothing, has no server, and transmits nothing to its
-author. With default settings the answer is a flat **no data collected** in every
-category:
+The extension has no server, collects nothing, and transmits nothing to its
+author. No analytics, no telemetry, no accounts. With deep recovery left off —
+the default — nothing about the user reaches anyone but Bluesky.
 
-- Chrome: tick "I do not collect user data" and all three certification checkboxes.
-- Edge: answer "No" to every data-collection question.
-- AMO: the manifest declares `data_collection_permissions: { required: ["none"] }`,
-  which is accurate for the required set — nothing is transmitted unless the user
-  opts in.
+Deep recovery is the one exception, and it is declared rather than argued away.
+When the user switches it on, the URI of the post being viewed goes to
+`constellation.microcosm.blue`. Nobody collects it on our side, but transmitting
+it falls under Chrome's "web history" and Firefox's `browsingActivity`, and every
+store treats an under-declaration far more harshly than an over-declaration.
 
-> **Decide this before submitting.** Deep recovery, when the user switches it on,
-> sends the URI of the post being viewed to `constellation.microcosm.blue`, a
-> third party. Nobody collects it on our side, but a strict reading of Chrome's
-> "web history" and AMO's `browsingActivity` categories covers *transmitting* it,
-> and all three stores treat an under-declaration far more harshly than an
-> over-declaration. Two defensible options:
->
-> 1. Declare it. On AMO that means adding `optional: ["browsingActivity"]` to
->    `data_collection_permissions`; on Chrome and Edge, disclose it as web-history
->    data used solely for the extension's single purpose, never sold or transferred.
-> 2. Argue it is out of scope, on the grounds that the feature is off by default
->    and the request carries a public record address rather than anything about
->    the user.
->
-> Option 1 is the safer submission. Note it is not purely a manifest line: done
-> properly on Firefox, an `optional` data permission is also requested at runtime
-> via `browser.permissions.request({ data_collection: ["browsingActivity"] })`
-> when the user switches deep recovery on, which is what actually produces the
-> consent prompt. Declaring it without requesting it is harmless but pointless.
->
-> Either way the listing text does not change — the behaviour is already spelled
-> out in the description above.
+What ships:
+
+- **Firefox** — the manifest declares `optional: ["browsingActivity"]`, and
+  `src/popup.js` calls `permissions.request` at the moment the switch is flipped
+  on, so the consent prompt appears with context. Declining leaves the switch off
+  and writes nothing; switching it back off returns the permission. The `required`
+  set stays `["none"]`, which is what the install-time prompt reflects.
+- **Chrome and Edge** — no manifest equivalent, so disclose it in the dashboard:
+  tick **web history**, purpose "single purpose of the item", and confirm it is
+  neither sold nor transferred. Do *not* tick "I do not collect user data" — the
+  opt-in transmission makes that inaccurate.
 
 ---
 
