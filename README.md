@@ -96,6 +96,18 @@ npm run test:e2e:firefox  # the same, in Firefox via geckodriver
 npm run lint:firefox      # web-ext lint on the Firefox build
 npm run record-fixtures   # refresh fixtures after an API change
 npm run store:screenshots # before/after listing shots at both store sizes
+npm run dev:firefox       # launch Firefox with the extension loaded, hot-reloading
+```
+
+`dev:firefox` is the Firefox inner loop: `web-ext` installs the build as a
+temporary add-on, opens a thread that exercises it, and reloads on every source
+change — no `about:debugging` round trip. It is also the way to see the
+`browsingActivity` consent prompt, which no automated test can answer.
+
+It needs a Firefox on `PATH`, or point it at one:
+
+```sh
+WEB_EXT_FIREFOX=/path/to/firefox npm run dev:firefox
 ```
 
 CI runs the offline suite and `web-ext lint` on every push and pull request, and
