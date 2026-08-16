@@ -80,11 +80,12 @@ npm run build             # dist/{chrome,firefox} plus zips — no dependencies 
 npm test                  # offline, against recorded API fixtures
 npm run test:live         # re-checks the API assumptions against Bluesky
 npm run test:e2e          # loads the built extension into Chrome, hits the real site
+npm run test:e2e:firefox  # the same, in Firefox via geckodriver
 npm run lint:firefox      # web-ext lint on the Firefox build
 npm run record-fixtures   # refresh fixtures after an API change
 ```
 
-Building needs nothing installed. The tests beyond `npm test` need `npm i` (Playwright for the end-to-end run, `web-ext` for the Firefox lint).
+Building needs nothing installed. The tests beyond `npm test` need `npm i`, and the Firefox run additionally needs `geckodriver` plus a Firefox binary — point at them with `GECKODRIVER=` and `FIREFOX_BIN=` if they are not on `PATH`.
 
 `npm test` loads `src/interceptor.js` itself into a sandboxed page-like context, so it exercises the file that ships rather than a copy of its logic.
 

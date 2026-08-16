@@ -16,35 +16,29 @@
  *   npm i -D playwright && npx playwright install chromium
  *   node scripts/build.mjs && node test/e2e.mjs
  */
+import crypto from 'node:crypto';
 import path from 'node:path';
 import fs from 'node:fs';
 import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
+import { SCENARIOS } from './scenarios.mjs';
+
+/**
+ * Chrome derives an unpacked extension's ID from the absolute path of its
+ * directory: the first 16 bytes of the SHA-256, with each hex digit remapped
+ * from 0-f to a-p. Deriving it beats scraping chrome://extensions, and this
+ * build has no service worker whose URL would otherwise reveal it.
+ */
+function unpackedExtensionId(dir) {
+  const digest = crypto.createHash('sha256').update(dir, 'utf8').digest('hex').slice(0, 32);
+  return [...digest].map((c) => String.fromCharCode(parseInt(c, 16) + 97)).join('');
+}
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const EXTENSION = path.join(ROOT, 'dist', 'chrome');
 
-/*
- * Two scenarios, because the two stub kinds are spliced into different shapes
- * and only a real browser proves Bluesky renders each of them.
- */
-const SCENARIOS = [
-  {
-    name: 'blocked quote embed',
-    url: 'https://bsky.app/profile/ed3d.net/post/3mt5jmqs4n22n',
-    // ed3d.net quotes skity.bsky.social; the two accounts block each other.
-    expect: ['@skity.bsky.social', 'Coding is largely solved'],
-    // The grey placeholder that stands in for the quote when it is hidden.
-    absent: 'Blocked',
-  },
-  {
-    name: 'blocked parent in a thread',
-    url: 'https://bsky.app/profile/skity.bsky.social/post/3mt5n422h422o',
-    // The parent is by aly.codes, who skity blocks, so it is dropped for everyone.
-    expect: ['@aly.codes', 'extremely normal analogy'],
-  },
-];
+const POPUP = `chrome-extension://${unpackedExtensionId(EXTENSION)}/src/popup.html`;
 
 if (!fs.existsSync(EXTENSION)) throw new Error('run `node scripts/build.mjs` first');
 
@@ -107,6 +101,19 @@ try {
     console.log(`screenshot: ${path.relative(ROOT, shot)}`);
     await page.close();
   }
+
+  // The popup is the only UI the extension owns; check it loads and that a
+  // toggle actually reaches storage rather than silently doing nothing.
+  console.log('\n# popup');
+  const popup = await context.newPage();
+  await popup.goto(POPUP);
+  check('popup page loads', await popup.locator('#enabled').isVisible());
+
+  const before = await popup.evaluate(() => chrome.storage.local.get({ deepRecovery: false }));
+  await popup.locator('#deepRecovery').click();
+  const after = await popup.evaluate(() => chrome.storage.local.get({ deepRecovery: false }));
+  check('toggling a setting persists it', before.deepRecovery === false && after.deepRecovery === true);
+  await popup.close();
 } finally {
   await context.close();
   fs.rmSync(profile, { recursive: true, force: true });
