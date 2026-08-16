@@ -1,0 +1,773 @@
+{
+  "feed": [
+    {
+      "post": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5n422h422o",
+        "cid": "bafyreigf2kgwduehszue23f2hasyvt4kbank2bvoi6su7beib6xsqizhea",
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+          "handle": "skity.bsky.social",
+          "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [],
+          "createdAt": "2025-01-25T06:00:06.543Z"
+        },
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "createdAt": "2026-08-15T21:39:02.569Z",
+          "langs": [
+            "en"
+          ],
+          "reply": {
+            "parent": {
+              "cid": "bafyreih2px2jszv3qrnjwmw7j5beilkfeap2vr6zjsz7znrjhgr6qk7xy4",
+              "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22"
+            },
+            "root": {
+              "cid": "bafyreih2px2jszv3qrnjwmw7j5beilkfeap2vr6zjsz7znrjhgr6qk7xy4",
+              "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22"
+            }
+          },
+          "text": "I like all the nübs who act as scabs then cry when they get called out. Its my favorite part of computing 🙄🙄🙄🤢🤢🤢🤮🤮🤮🤮"
+        },
+        "bookmarkCount": 0,
+        "replyCount": 0,
+        "repostCount": 0,
+        "likeCount": 0,
+        "quoteCount": 0,
+        "indexedAt": "2026-08-15T21:39:03.378Z",
+        "labels": []
+      },
+      "reply": {
+        "root": {
+          "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:zntngpowgd6rorjt3haywj36"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        },
+        "parent": {
+          "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:zntngpowgd6rorjt3haywj36"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5g36y66c2b",
+        "cid": "bafyreidwmo34lf22tuj6hvocsgi72q7mu3whd5so4qnw55gxcr5xdai2ee",
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+          "handle": "skity.bsky.social",
+          "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [],
+          "createdAt": "2025-01-25T06:00:06.543Z"
+        },
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "createdAt": "2026-08-15T19:33:17.989Z",
+          "langs": [
+            "en"
+          ],
+          "reply": {
+            "parent": {
+              "cid": "bafyreihdf7ey5mxbhoqel4grwpupw6ewjqwlv7jrjwmrfwmtaaouq7tb2e",
+              "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s"
+            },
+            "root": {
+              "cid": "bafyreihdf7ey5mxbhoqel4grwpupw6ewjqwlv7jrjwmrfwmtaaouq7tb2e",
+              "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s"
+            }
+          },
+          "text": "Don't @me, idiot"
+        },
+        "bookmarkCount": 0,
+        "replyCount": 0,
+        "repostCount": 0,
+        "likeCount": 0,
+        "quoteCount": 0,
+        "indexedAt": "2026-08-15T19:33:18.867Z",
+        "labels": []
+      },
+      "reply": {
+        "root": {
+          "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        },
+        "parent": {
+          "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5g2sjnak2b",
+        "cid": "bafyreifc6qdzm72svkbozpjgb237evsmwqvq5oacd326nbp3gx5hxhcehi",
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+          "handle": "skity.bsky.social",
+          "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [],
+          "createdAt": "2025-01-25T06:00:06.543Z"
+        },
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "createdAt": "2026-08-15T19:33:04.420Z",
+          "langs": [
+            "en"
+          ],
+          "reply": {
+            "parent": {
+              "cid": "bafyreid2mdqx4xh4ht3km4wcmec5g7dnpkqjtpfw4zedamdh5fvpqtsx4u",
+              "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5g2rzzak2b"
+            },
+            "root": {
+              "cid": "bafyreihdf7ey5mxbhoqel4grwpupw6ewjqwlv7jrjwmrfwmtaaouq7tb2e",
+              "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s"
+            }
+          },
+          "text": "manage better, friend. Cause if you've ever used Android, LLMs, or the internet in any way, you're using a platform I worked on. Its become easy as hell to spot inexperienced coders though. You guys are racing to out yourself by shitting the bed for everyone"
+        },
+        "bookmarkCount": 0,
+        "replyCount": 0,
+        "repostCount": 0,
+        "likeCount": 0,
+        "quoteCount": 0,
+        "indexedAt": "2026-08-15T19:33:05.495Z",
+        "labels": []
+      },
+      "reply": {
+        "root": {
+          "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        },
+        "parent": {
+          "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5g2rzzak2b",
+          "cid": "bafyreid2mdqx4xh4ht3km4wcmec5g7dnpkqjtpfw4zedamdh5fvpqtsx4u",
+          "author": {
+            "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+            "handle": "skity.bsky.social",
+            "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+            "associated": {
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2025-01-25T06:00:06.543Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T19:33:04.419Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreibhxwxp7nlstnbnusptkfvyb4g3yegwygnvug4jhajceoqubejbka",
+                "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5e6qzvt22s"
+              },
+              "root": {
+                "cid": "bafyreihdf7ey5mxbhoqel4grwpupw6ewjqwlv7jrjwmrfwmtaaouq7tb2e",
+                "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s"
+              }
+            },
+            "text": "Haha what a garbage take. I'm sorry you can't take advice from experienced folks. If you aren't doing anything with hardware or software, my opinion can be safely ignored. Otherwise, I worked on multiple platforms you use. Ignore at your own peril. Your jealousy is an emotion you need to learn to"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 1,
+          "repostCount": 0,
+          "likeCount": 0,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T19:33:05.465Z",
+          "labels": [],
+          "$type": "app.bsky.feed.defs#postView"
+        },
+        "grandparentAuthor": {
+          "did": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2",
+          "handle": "gingerjet.net",
+          "displayName": "Tim Shea",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:vy6o7yemm3w4nzy4pxnvwnm2/bafkreibxi27tk7kcvnjkp6jncxe4gb3vuem7p4mgexukun6mebixjaqjky",
+          "associated": {
+            "chat": {
+              "allowIncoming": "none"
+            },
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [
+            {
+              "src": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2",
+              "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.actor.profile/self",
+              "cid": "bafyreiebptmutmx4knu7ucxg2py5yfvru5yongdosk3vr3mybwhvwmbb7y",
+              "val": "!no-unauthenticated",
+              "cts": "1970-01-01T00:00:00.000Z"
+            }
+          ],
+          "createdAt": "2023-06-13T16:14:22.177Z"
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5g2rzzak2b",
+        "cid": "bafyreid2mdqx4xh4ht3km4wcmec5g7dnpkqjtpfw4zedamdh5fvpqtsx4u",
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+          "handle": "skity.bsky.social",
+          "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [],
+          "createdAt": "2025-01-25T06:00:06.543Z"
+        },
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "createdAt": "2026-08-15T19:33:04.419Z",
+          "langs": [
+            "en"
+          ],
+          "reply": {
+            "parent": {
+              "cid": "bafyreibhxwxp7nlstnbnusptkfvyb4g3yegwygnvug4jhajceoqubejbka",
+              "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5e6qzvt22s"
+            },
+            "root": {
+              "cid": "bafyreihdf7ey5mxbhoqel4grwpupw6ewjqwlv7jrjwmrfwmtaaouq7tb2e",
+              "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s"
+            }
+          },
+          "text": "Haha what a garbage take. I'm sorry you can't take advice from experienced folks. If you aren't doing anything with hardware or software, my opinion can be safely ignored. Otherwise, I worked on multiple platforms you use. Ignore at your own peril. Your jealousy is an emotion you need to learn to"
+        },
+        "bookmarkCount": 0,
+        "replyCount": 1,
+        "repostCount": 0,
+        "likeCount": 0,
+        "quoteCount": 0,
+        "indexedAt": "2026-08-15T19:33:05.465Z",
+        "labels": []
+      },
+      "reply": {
+        "root": {
+          "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        },
+        "parent": {
+          "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5e6qzvt22s",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt4xuuizos2b",
+        "cid": "bafyreibxwzmtr5qdhv5wjoccn6szxb67ybqg74nucsgrsuwxze6kcysqju",
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+          "handle": "skity.bsky.social",
+          "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [],
+          "createdAt": "2025-01-25T06:00:06.543Z"
+        },
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "createdAt": "2026-08-15T15:19:13.295Z",
+          "langs": [
+            "en"
+          ],
+          "reply": {
+            "parent": {
+              "cid": "bafyreicnpdyiknyp5qo7hlva5kvr3phxanobo7xgsewgebemk67yrv5vfy",
+              "uri": "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.feed.post/3mt4vp3syas2f"
+            },
+            "root": {
+              "cid": "bafyreignkgb4isjfqfooix64g57uipskdphtns6o565i5lxmyc34jgxwfu",
+              "uri": "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.feed.post/3mt4g5udsnc2l"
+            }
+          },
+          "text": "How long have you worked in the field of computing?? If its less than 10 years, I have over 3x the experience you do in the field, at every single level of coding, from building LLMs to writing assembly and working on bits at the circuit level.\n\nBut don't take my word for it. Ask your LLM."
+        },
+        "bookmarkCount": 0,
+        "replyCount": 1,
+        "repostCount": 0,
+        "likeCount": 0,
+        "quoteCount": 0,
+        "indexedAt": "2026-08-15T15:19:14.169Z",
+        "labels": []
+      },
+      "reply": {
+        "root": {
+          "uri": "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.feed.post/3mt4g5udsnc2l",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:fcegz3u2hkgigbiqwfvh7spe"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        },
+        "parent": {
+          "uri": "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.feed.post/3mt4vp3syas2f",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:fcegz3u2hkgigbiqwfvh7spe"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt4tmkidq22b",
+        "cid": "bafyreiawyief6l6v76uyhpq5cwd3fato5u775k3l2nkxzzh5qeaxhf37by",
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+          "handle": "skity.bsky.social",
+          "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [],
+          "createdAt": "2025-01-25T06:00:06.543Z"
+        },
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "createdAt": "2026-08-15T14:02:59.385Z",
+          "langs": [
+            "en"
+          ],
+          "reply": {
+            "parent": {
+              "cid": "bafyreihnzpgkiev5wujbzgnjmt3fbtu56hfuzsxugydzp5ckkgzc44nu44",
+              "uri": "at://did:plc:x3yt3sdtbvlhizqx5jh3hwuf/app.bsky.feed.post/3mt4ieldq7k25"
+            },
+            "root": {
+              "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+              "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m"
+            }
+          },
+          "text": "Basically we taught the LLMs to think like data scientists. It was largely a failure, but they shipped anyway."
+        },
+        "bookmarkCount": 0,
+        "replyCount": 0,
+        "repostCount": 0,
+        "likeCount": 1,
+        "quoteCount": 0,
+        "indexedAt": "2026-08-15T14:02:59.867Z",
+        "labels": []
+      },
+      "reply": {
+        "root": {
+          "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m",
+          "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+          "author": {
+            "did": "did:plc:uashgn65n5z7aqwk5cbuba5c",
+            "handle": "bnb.im",
+            "displayName": "tierney cyren",
+            "pronouns": "they/them",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:uashgn65n5z7aqwk5cbuba5c/bafkreie7yqp4dgvsgkxjyxrphvuudmzzgaovbqoq6h2nuswi3i7xfwq54i",
+            "associated": {
+              "chat": {
+                "allowIncoming": "all",
+                "allowGroupInvites": "all"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-04-21T15:11:12.314Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-14T15:47:34.511Z",
+            "langs": [
+              "en"
+            ],
+            "text": "“coding is largely solved” okay make a new cross platform web browser that supports every web platform spec to 100% compliance"
+          },
+          "bookmarkCount": 24,
+          "replyCount": 70,
+          "repostCount": 81,
+          "likeCount": 1066,
+          "quoteCount": 10,
+          "indexedAt": "2026-08-14T15:47:34.867Z",
+          "labels": [],
+          "$type": "app.bsky.feed.defs#postView"
+        },
+        "parent": {
+          "uri": "at://did:plc:x3yt3sdtbvlhizqx5jh3hwuf/app.bsky.feed.post/3mt4ieldq7k25",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:x3yt3sdtbvlhizqx5jh3hwuf"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt4tl3b5dc2b",
+        "cid": "bafyreig3kuy6ahrzg44feqpyavkeylmbnl6x5ijmunwfonss7c7zwenf24",
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+          "handle": "skity.bsky.social",
+          "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [],
+          "createdAt": "2025-01-25T06:00:06.543Z"
+        },
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "createdAt": "2026-08-15T14:02:09.866Z",
+          "langs": [
+            "en"
+          ],
+          "reply": {
+            "parent": {
+              "cid": "bafyreihnzpgkiev5wujbzgnjmt3fbtu56hfuzsxugydzp5ckkgzc44nu44",
+              "uri": "at://did:plc:x3yt3sdtbvlhizqx5jh3hwuf/app.bsky.feed.post/3mt4ieldq7k25"
+            },
+            "root": {
+              "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+              "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m"
+            }
+          },
+          "text": "I'm not looking to use LLMs. I helped build the ones you use. Good that their capacity has improved, but so has their water consumption, and the fact that all the \"data kids\" don't give a shit about the thousands of gallons of water they waste each day in computing just says everything I need to"
+        },
+        "bookmarkCount": 0,
+        "replyCount": 1,
+        "repostCount": 0,
+        "likeCount": 0,
+        "quoteCount": 0,
+        "indexedAt": "2026-08-15T14:02:10.865Z",
+        "labels": []
+      },
+      "reply": {
+        "root": {
+          "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m",
+          "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+          "author": {
+            "did": "did:plc:uashgn65n5z7aqwk5cbuba5c",
+            "handle": "bnb.im",
+            "displayName": "tierney cyren",
+            "pronouns": "they/them",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:uashgn65n5z7aqwk5cbuba5c/bafkreie7yqp4dgvsgkxjyxrphvuudmzzgaovbqoq6h2nuswi3i7xfwq54i",
+            "associated": {
+              "chat": {
+                "allowIncoming": "all",
+                "allowGroupInvites": "all"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-04-21T15:11:12.314Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-14T15:47:34.511Z",
+            "langs": [
+              "en"
+            ],
+            "text": "“coding is largely solved” okay make a new cross platform web browser that supports every web platform spec to 100% compliance"
+          },
+          "bookmarkCount": 24,
+          "replyCount": 70,
+          "repostCount": 81,
+          "likeCount": 1066,
+          "quoteCount": 10,
+          "indexedAt": "2026-08-14T15:47:34.867Z",
+          "labels": [],
+          "$type": "app.bsky.feed.defs#postView"
+        },
+        "parent": {
+          "uri": "at://did:plc:x3yt3sdtbvlhizqx5jh3hwuf/app.bsky.feed.post/3mt4ieldq7k25",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:x3yt3sdtbvlhizqx5jh3hwuf"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt4sie3as22b",
+        "cid": "bafyreigr7rubssnmdaaifah32zuyfp3rk2ncpfcxotyswqhoc5fvt3j4sy",
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+          "handle": "skity.bsky.social",
+          "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [],
+          "createdAt": "2025-01-25T06:00:06.543Z"
+        },
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "createdAt": "2026-08-15T13:42:44.705Z",
+          "langs": [
+            "en"
+          ],
+          "reply": {
+            "parent": {
+              "cid": "bafyreihqldp4xqdx2qi5uc6c677glq4e5hiahwi6twvxwavfzrbbdiw56y",
+              "uri": "at://did:plc:kpxj7utcy6mjv4rmzitnnrmv/app.bsky.feed.post/3mt4rviubi227"
+            },
+            "root": {
+              "cid": "bafyreihqldp4xqdx2qi5uc6c677glq4e5hiahwi6twvxwavfzrbbdiw56y",
+              "uri": "at://did:plc:kpxj7utcy6mjv4rmzitnnrmv/app.bsky.feed.post/3mt4rviubi227"
+            }
+          },
+          "text": "Why are stupid people taking all my posts so personally?? Is it because you don't have a life???"
+        },
+        "bookmarkCount": 0,
+        "replyCount": 0,
+        "repostCount": 0,
+        "likeCount": 0,
+        "quoteCount": 0,
+        "indexedAt": "2026-08-15T13:42:45.973Z",
+        "labels": []
+      },
+      "reply": {
+        "root": {
+          "uri": "at://did:plc:kpxj7utcy6mjv4rmzitnnrmv/app.bsky.feed.post/3mt4rviubi227",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:kpxj7utcy6mjv4rmzitnnrmv"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        },
+        "parent": {
+          "uri": "at://did:plc:kpxj7utcy6mjv4rmzitnnrmv/app.bsky.feed.post/3mt4rviubi227",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:kpxj7utcy6mjv4rmzitnnrmv"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt4qneztrs2b",
+        "cid": "bafyreiblbfdisng7ctaelobn4qlkzohviwlzsy6ymjwyei3azhfghudeiu",
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+          "handle": "skity.bsky.social",
+          "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [],
+          "createdAt": "2025-01-25T06:00:06.543Z"
+        },
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "createdAt": "2026-08-15T13:09:45.996Z",
+          "langs": [
+            "en"
+          ],
+          "reply": {
+            "parent": {
+              "cid": "bafyreigvrpgvfqur3oy25zeeyz63i6zktae3wx6khwpfexo7yu2ckzedoi",
+              "uri": "at://did:plc:aldgcbb337jg7cvzogh37p64/app.bsky.feed.post/3mt4q4dxz4c22"
+            },
+            "root": {
+              "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+              "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m"
+            }
+          },
+          "text": "....... I don't think you understand how LLMs work on a fundamental level. I'm sorry my grad school AI take sounds uneducated to you. Look up Dunning Krueger to understand the mentality that you are suffering from"
+        },
+        "bookmarkCount": 0,
+        "replyCount": 2,
+        "repostCount": 0,
+        "likeCount": 3,
+        "quoteCount": 1,
+        "indexedAt": "2026-08-15T13:09:47.871Z",
+        "labels": []
+      },
+      "reply": {
+        "root": {
+          "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m",
+          "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+          "author": {
+            "did": "did:plc:uashgn65n5z7aqwk5cbuba5c",
+            "handle": "bnb.im",
+            "displayName": "tierney cyren",
+            "pronouns": "they/them",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:uashgn65n5z7aqwk5cbuba5c/bafkreie7yqp4dgvsgkxjyxrphvuudmzzgaovbqoq6h2nuswi3i7xfwq54i",
+            "associated": {
+              "chat": {
+                "allowIncoming": "all",
+                "allowGroupInvites": "all"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-04-21T15:11:12.314Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-14T15:47:34.511Z",
+            "langs": [
+              "en"
+            ],
+            "text": "“coding is largely solved” okay make a new cross platform web browser that supports every web platform spec to 100% compliance"
+          },
+          "bookmarkCount": 24,
+          "replyCount": 70,
+          "repostCount": 81,
+          "likeCount": 1066,
+          "quoteCount": 10,
+          "indexedAt": "2026-08-14T15:47:34.867Z",
+          "labels": [],
+          "$type": "app.bsky.feed.defs#postView"
+        },
+        "parent": {
+          "uri": "at://did:plc:aldgcbb337jg7cvzogh37p64/app.bsky.feed.post/3mt4q4dxz4c22",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:aldgcbb337jg7cvzogh37p64"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3memfr5k2u",
+        "cid": "bafyreiaihf2eizkly7pssyyxuturft7xp7gy2icpn64rihfgc6nhlt22pm",
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+          "handle": "skity.bsky.social",
+          "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+          "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+          "associated": {
+            "activitySubscription": {
+              "allowSubscriptions": "followers"
+            }
+          },
+          "labels": [],
+          "createdAt": "2025-01-25T06:00:06.543Z"
+        },
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "createdAt": "2026-08-15T02:20:37.031Z",
+          "langs": [
+            "en"
+          ],
+          "reply": {
+            "parent": {
+              "cid": "bafyreibr7fetbveiz4dspar63titaub6vbjy7j5rs5smanzmahabfnavuq",
+              "uri": "at://did:plc:6syfl54geeqphn2u22yegpbl/app.bsky.feed.post/3msyuyodimc2a"
+            },
+            "root": {
+              "cid": "bafyreibr7fetbveiz4dspar63titaub6vbjy7j5rs5smanzmahabfnavuq",
+              "uri": "at://did:plc:6syfl54geeqphn2u22yegpbl/app.bsky.feed.post/3msyuyodimc2a"
+            }
+          },
+          "text": "Because you are white? Do you know what it was like to be nonwhite under Biden?? To watch the Democrats do absolutely nothing to stop Trump's rise after we were promised that they would make it all OK???"
+        },
+        "bookmarkCount": 0,
+        "replyCount": 0,
+        "repostCount": 0,
+        "likeCount": 0,
+        "quoteCount": 0,
+        "indexedAt": "2026-08-15T02:20:37.870Z",
+        "labels": []
+      },
+      "reply": {
+        "root": {
+          "uri": "at://did:plc:6syfl54geeqphn2u22yegpbl/app.bsky.feed.post/3msyuyodimc2a",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:6syfl54geeqphn2u22yegpbl"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        },
+        "parent": {
+          "uri": "at://did:plc:6syfl54geeqphn2u22yegpbl/app.bsky.feed.post/3msyuyodimc2a",
+          "blocked": true,
+          "author": {
+            "did": "did:plc:6syfl54geeqphn2u22yegpbl"
+          },
+          "$type": "app.bsky.feed.defs#blockedPost"
+        }
+      }
+    }
+  ]
+}

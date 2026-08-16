@@ -1,0 +1,77 @@
+{
+  "hasOtherReplies": false,
+  "thread": [
+    {
+      "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22",
+      "depth": 0,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22",
+          "cid": "bafyreih2px2jszv3qrnjwmw7j5beilkfeap2vr6zjsz7znrjhgr6qk7xy4",
+          "author": {
+            "did": "did:plc:zntngpowgd6rorjt3haywj36",
+            "handle": "aly.codes",
+            "displayName": "aly",
+            "pronouns": "she/they",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:zntngpowgd6rorjt3haywj36/bafkreiec2otdkezi3ulrljie6eukfwat6hreiff4ighepc3njynll6mbtm",
+            "associated": {
+              "chat": {
+                "allowIncoming": "all",
+                "allowGroupInvites": "following"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "mutuals"
+              },
+              "germ": {
+                "showButtonTo": "usersIFollow",
+                "messageMeUrl": "https://landing.ger.mx/newUser"
+              }
+            },
+            "labels": [],
+            "createdAt": "2025-04-10T03:29:11.873Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T21:04:40.862Z",
+            "embed": {
+              "$type": "app.bsky.embed.record",
+              "record": {
+                "cid": "bafyreifsdifuz6daw5lg57c5ig2ej4gaqxib4bly22myoxycqa6ced4oru",
+                "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm5lfak2y"
+              }
+            },
+            "langs": [
+              "en"
+            ],
+            "text": "extremely normal analogy to make",
+            "via": "Witchsky Web App"
+          },
+          "embed": {
+            "record": {
+              "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm5lfak2y",
+              "blocked": true,
+              "author": {
+                "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj"
+              },
+              "$type": "app.bsky.embed.record#viewBlocked"
+            },
+            "$type": "app.bsky.embed.record#view"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 1,
+          "repostCount": 0,
+          "likeCount": 2,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T21:04:41.371Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": true,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "bsky-not-blocked",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Firefox and Chromium extensions that restore Bluesky posts hidden from third-party viewers by a block between two other accounts.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test 'test/*.test.mjs'",
+    "test:live": "BSKY_NOT_BLOCKED_LIVE=1 node --test 'test/*.test.mjs'",
+    "record-fixtures": "node scripts/record-fixtures.mjs",
+    "icons": "bash scripts/make-icons.sh"
+  }
+}

@@ -1,0 +1,726 @@
+{
+  "hasOtherReplies": false,
+  "thread": [
+    {
+      "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n",
+      "depth": 0,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n",
+          "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+          "author": {
+            "did": "did:plc:klhtmrnregub7we7h6jwiljm",
+            "handle": "ed3d.net",
+            "displayName": "Ed",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:klhtmrnregub7we7h6jwiljm/bafkreiax76tzue7jcdk44ug6vv62ikttoq4c3waolhs2lo3yih6vdoje4a",
+            "associated": {
+              "chat": {
+                "allowIncoming": "all"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-04-27T23:01:37.442Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T20:36:48.317Z",
+            "embed": {
+              "$type": "app.bsky.embed.record",
+              "record": {
+                "cid": "bafyreigsta2e4b3mvtafeiqai6p2gmjupm4kqfw4x2tivctxnx75kwglla",
+                "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y"
+              }
+            },
+            "langs": [
+              "en"
+            ],
+            "text": "project glasswing and daybreak don't exist, apparently.\n\n\"unaware of the current state of the art or lying to self-soothe\" is my least favorite parlor game."
+          },
+          "embed": {
+            "record": {
+              "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y",
+              "blocked": true,
+              "author": {
+                "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj"
+              },
+              "$type": "app.bsky.embed.record#viewBlocked"
+            },
+            "$type": "app.bsky.embed.record#view"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 2,
+          "repostCount": 1,
+          "likeCount": 35,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T20:36:48.475Z",
+          "labels": [],
+          "threadgate": {
+            "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.threadgate/3mt5jmqs4n22n",
+            "cid": "bafyreihna437um2xzdnnzayn2wl3o5qpu6hbzczzez5tp5y4imivgsny64",
+            "record": {
+              "$type": "app.bsky.feed.threadgate",
+              "allow": [
+                {
+                  "$type": "app.bsky.feed.threadgate#followerRule"
+                },
+                {
+                  "$type": "app.bsky.feed.threadgate#followingRule"
+                },
+                {
+                  "$type": "app.bsky.feed.threadgate#mentionRule"
+                }
+              ],
+              "createdAt": "2026-08-15T20:36:48.319Z",
+              "hiddenReplies": [],
+              "post": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+            },
+            "lists": []
+          }
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": true,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost",
+        "opThreadPostIndex": 1,
+        "opThreadPostCount": 3
+      }
+    },
+    {
+      "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jvl6yd22s",
+      "depth": 1,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jvl6yd22s",
+          "cid": "bafyreiceaidclkcp7nr2wmw2ffkqlhkxr65d7dhuah5p2nyhomra5uqz64",
+          "author": {
+            "did": "did:plc:klhtmrnregub7we7h6jwiljm",
+            "handle": "ed3d.net",
+            "displayName": "Ed",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:klhtmrnregub7we7h6jwiljm/bafkreiax76tzue7jcdk44ug6vv62ikttoq4c3waolhs2lo3yih6vdoje4a",
+            "associated": {
+              "chat": {
+                "allowIncoming": "all"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-04-27T23:01:37.442Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T20:41:44.435Z",
+            "embed": {
+              "$type": "app.bsky.embed.images",
+              "images": [
+                {
+                  "alt": "",
+                  "aspectRatio": {
+                    "height": 434,
+                    "width": 1170
+                  },
+                  "image": {
+                    "$type": "blob",
+                    "ref": {
+                      "$link": "bafkreidms3mpbor2xnsftrluj357lfexxefoyo75pwndegzna474mxj254"
+                    },
+                    "mimeType": "image/jpeg",
+                    "size": 257856
+                  }
+                }
+              ]
+            },
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              },
+              "root": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              }
+            },
+            "text": "don't worry, we got this"
+          },
+          "embed": {
+            "images": [
+              {
+                "thumb": "https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:klhtmrnregub7we7h6jwiljm/bafkreidms3mpbor2xnsftrluj357lfexxefoyo75pwndegzna474mxj254",
+                "fullsize": "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:klhtmrnregub7we7h6jwiljm/bafkreidms3mpbor2xnsftrluj357lfexxefoyo75pwndegzna474mxj254",
+                "alt": "",
+                "aspectRatio": {
+                  "height": 434,
+                  "width": 1170
+                }
+              }
+            ],
+            "$type": "app.bsky.embed.images#view"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 4,
+          "repostCount": 0,
+          "likeCount": 26,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T20:41:45.469Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": true,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost",
+        "opThreadPostIndex": 2,
+        "opThreadPostCount": 3
+      }
+    },
+    {
+      "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jxw5jas2s",
+      "depth": 2,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jxw5jas2s",
+          "cid": "bafyreigw45iok7e4punoxcleqcqzsnf5t5pwpfjtey5a63si2lhi2mh37q",
+          "author": {
+            "did": "did:plc:klhtmrnregub7we7h6jwiljm",
+            "handle": "ed3d.net",
+            "displayName": "Ed",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:klhtmrnregub7we7h6jwiljm/bafkreiax76tzue7jcdk44ug6vv62ikttoq4c3waolhs2lo3yih6vdoje4a",
+            "associated": {
+              "chat": {
+                "allowIncoming": "all"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-04-27T23:01:37.442Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T20:43:03.032Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreiceaidclkcp7nr2wmw2ffkqlhkxr65d7dhuah5p2nyhomra5uqz64",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jvl6yd22s"
+              },
+              "root": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              }
+            },
+            "text": "like come on, just don't lie. nobody's saying you have to like the thing. but don't lie"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 1,
+          "repostCount": 0,
+          "likeCount": 21,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T20:43:05.877Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": true,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost",
+        "opThreadPostIndex": 3,
+        "opThreadPostCount": 3
+      }
+    },
+    {
+      "uri": "at://did:plc:iyumebsmsyc4mxaifhdtytt2/app.bsky.feed.post/3mt5k7s67ks25",
+      "depth": 2,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:iyumebsmsyc4mxaifhdtytt2/app.bsky.feed.post/3mt5k7s67ks25",
+          "cid": "bafyreie64yyr5cz6pty4mrnn6i3lavrhkefanrjn6prxo7m5c77smvwbau",
+          "author": {
+            "did": "did:plc:iyumebsmsyc4mxaifhdtytt2",
+            "handle": "nonplussed73.bsky.social",
+            "displayName": "nonplussed",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:iyumebsmsyc4mxaifhdtytt2/bafkreihustgy3oube4b74utezqkk7t2erw3z5edggufehi267uy2uoeeye",
+            "associated": {
+              "chat": {
+                "allowIncoming": "following"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-09-30T12:44:03.410Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T20:47:27.293Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreiceaidclkcp7nr2wmw2ffkqlhkxr65d7dhuah5p2nyhomra5uqz64",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jvl6yd22s"
+              },
+              "root": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              }
+            },
+            "text": "Show me code that is shelf stable and 100% bug free written by humans."
+          },
+          "bookmarkCount": 0,
+          "replyCount": 1,
+          "repostCount": 0,
+          "likeCount": 9,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T20:47:27.677Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": false,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    },
+    {
+      "uri": "at://did:plc:tefudx2goyyuhl6nttbfa4yd/app.bsky.feed.post/3mt5mqvdmos2e",
+      "depth": 3,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:tefudx2goyyuhl6nttbfa4yd/app.bsky.feed.post/3mt5mqvdmos2e",
+          "cid": "bafyreierzapnhek7m4onh2hyrsimyvfyy3lmynjtxxjsitjat7do3wyz4u",
+          "author": {
+            "did": "did:plc:tefudx2goyyuhl6nttbfa4yd",
+            "handle": "mstrofbass.bsky.social",
+            "displayName": "Blake Stovall",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:tefudx2goyyuhl6nttbfa4yd/bafkreib463desay2aqwvkogbuypd7mtruser7pfl477xfkbmj5h36cegt4",
+            "associated": {
+              "chat": {
+                "allowIncoming": "none",
+                "allowGroupInvites": "none"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-05-01T02:53:57.766Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T21:32:48.527Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreie64yyr5cz6pty4mrnn6i3lavrhkefanrjn6prxo7m5c77smvwbau",
+                "uri": "at://did:plc:iyumebsmsyc4mxaifhdtytt2/app.bsky.feed.post/3mt5k7s67ks25"
+              },
+              "root": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              }
+            },
+            "text": "Yeah I don’t even know what “shelf stable” means but “100% bug free” code hasn’t been a thing except in some very, very niche use cases. \n\nNot sure if this means they simply have no knowledge of software engineering or are consciously choosing a different standard for AI"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 1,
+          "repostCount": 0,
+          "likeCount": 3,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T21:32:49.179Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": false,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    },
+    {
+      "uri": "at://did:plc:iyumebsmsyc4mxaifhdtytt2/app.bsky.feed.post/3mt5muxzqss25",
+      "depth": 4,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:iyumebsmsyc4mxaifhdtytt2/app.bsky.feed.post/3mt5muxzqss25",
+          "cid": "bafyreigpuflwevystvkbz2adtmhidd5mtie3vu5qakjy5bpiwjxmq6auea",
+          "author": {
+            "did": "did:plc:iyumebsmsyc4mxaifhdtytt2",
+            "handle": "nonplussed73.bsky.social",
+            "displayName": "nonplussed",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:iyumebsmsyc4mxaifhdtytt2/bafkreihustgy3oube4b74utezqkk7t2erw3z5edggufehi267uy2uoeeye",
+            "associated": {
+              "chat": {
+                "allowIncoming": "following"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-09-30T12:44:03.410Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T21:35:05.568Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreierzapnhek7m4onh2hyrsimyvfyy3lmynjtxxjsitjat7do3wyz4u",
+                "uri": "at://did:plc:tefudx2goyyuhl6nttbfa4yd/app.bsky.feed.post/3mt5mqvdmos2e"
+              },
+              "root": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              }
+            },
+            "text": "Right. There's this thing called code review I've heard."
+          },
+          "bookmarkCount": 0,
+          "replyCount": 1,
+          "repostCount": 0,
+          "likeCount": 1,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T21:35:06.290Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": false,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    },
+    {
+      "uri": "at://did:plc:r7u7br57m63eillhrq57uz7d/app.bsky.feed.post/3mt5nc6cb7c2z",
+      "depth": 5,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:r7u7br57m63eillhrq57uz7d/app.bsky.feed.post/3mt5nc6cb7c2z",
+          "cid": "bafyreidirxw75xjui3mj7uqaomrdt6hdf5oarvibu77ihus4l7wkamdkjy",
+          "author": {
+            "did": "did:plc:r7u7br57m63eillhrq57uz7d",
+            "handle": "carterwickstrom.bsky.social",
+            "displayName": "Carter Wickstrom",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:r7u7br57m63eillhrq57uz7d/bafkreiehqwbnaooghi72pwodyuv4swopwxdkt2griooyci2kokfdmq2nou",
+            "associated": {
+              "chat": {
+                "allowIncoming": "following"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-08-16T18:29:01.243Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T21:42:28.344Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreigpuflwevystvkbz2adtmhidd5mtie3vu5qakjy5bpiwjxmq6auea",
+                "uri": "at://did:plc:iyumebsmsyc4mxaifhdtytt2/app.bsky.feed.post/3mt5muxzqss25"
+              },
+              "root": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              }
+            },
+            "text": "or even agentic review! the bots are really good at finding bugs!"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 1,
+          "repostCount": 0,
+          "likeCount": 2,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T21:42:29.173Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": false,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    },
+    {
+      "uri": "at://did:plc:tefudx2goyyuhl6nttbfa4yd/app.bsky.feed.post/3mt5oc4tdgc2n",
+      "depth": 6,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:tefudx2goyyuhl6nttbfa4yd/app.bsky.feed.post/3mt5oc4tdgc2n",
+          "cid": "bafyreibgaybxl2lavmey2siebezqpwwink7fe4b3smtlsnxp27h47lhppy",
+          "author": {
+            "did": "did:plc:tefudx2goyyuhl6nttbfa4yd",
+            "handle": "mstrofbass.bsky.social",
+            "displayName": "Blake Stovall",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:tefudx2goyyuhl6nttbfa4yd/bafkreib463desay2aqwvkogbuypd7mtruser7pfl477xfkbmj5h36cegt4",
+            "associated": {
+              "chat": {
+                "allowIncoming": "none",
+                "allowGroupInvites": "none"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-05-01T02:53:57.766Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T22:00:20.548Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreidirxw75xjui3mj7uqaomrdt6hdf5oarvibu77ihus4l7wkamdkjy",
+                "uri": "at://did:plc:r7u7br57m63eillhrq57uz7d/app.bsky.feed.post/3mt5nc6cb7c2z"
+              },
+              "root": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              }
+            },
+            "text": "I prefer to do manual testing on my own and so I actively have to tell Claude to do less verification."
+          },
+          "bookmarkCount": 0,
+          "replyCount": 1,
+          "repostCount": 0,
+          "likeCount": 0,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T22:00:20.964Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 1,
+        "opThread": false,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    },
+    {
+      "uri": "at://did:plc:wqhhxg36ofhh4cbhe2l2qevm/app.bsky.feed.post/3mt5kdbucns26",
+      "depth": 2,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:wqhhxg36ofhh4cbhe2l2qevm/app.bsky.feed.post/3mt5kdbucns26",
+          "cid": "bafyreiati2lebnodtt5mmoeqgtj6vga4eaqgwbar3bg52wwgpkvtpthe4e",
+          "author": {
+            "did": "did:plc:wqhhxg36ofhh4cbhe2l2qevm",
+            "handle": "ennui.org",
+            "displayName": "reggie seidman",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:wqhhxg36ofhh4cbhe2l2qevm/bafkreibhlsuoer5ozvoi3laioi2w6tlgdq2rylrvx7iowm4riewcgcpu5i",
+            "associated": {
+              "chat": {
+                "allowIncoming": "none"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-05-04T18:47:48.286Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T20:49:24.412Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreiceaidclkcp7nr2wmw2ffkqlhkxr65d7dhuah5p2nyhomra5uqz64",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jvl6yd22s"
+              },
+              "root": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              }
+            },
+            "text": "what on earth"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 0,
+          "repostCount": 0,
+          "likeCount": 1,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T20:49:24.869Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": false,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    },
+    {
+      "uri": "at://did:plc:2lx4zpfda4y2rlwshr4gey6i/app.bsky.feed.post/3mt5qbmmeds26",
+      "depth": 2,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:2lx4zpfda4y2rlwshr4gey6i/app.bsky.feed.post/3mt5qbmmeds26",
+          "cid": "bafyreidwvhtlkyicfjnnqh5acyzcbds37jw2mkg2qvxxlsmvm4fzl52d2q",
+          "author": {
+            "did": "did:plc:2lx4zpfda4y2rlwshr4gey6i",
+            "handle": "dopamine.church",
+            "displayName": "【﻿ｒａｎｄｉ】",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:2lx4zpfda4y2rlwshr4gey6i/bafkreicgvqip5e27uw5cdv6fodssk3qjb2as7mrtw73az42iiujprxiz24",
+            "associated": {
+              "chat": {
+                "allowIncoming": "all"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2023-07-27T03:31:48.496Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T22:35:51.027Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreiceaidclkcp7nr2wmw2ffkqlhkxr65d7dhuah5p2nyhomra5uqz64",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jvl6yd22s"
+              },
+              "root": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              }
+            },
+            "text": "any time someone says \"100% bug free\" it just makes me think they've never written a line of code in their entire life."
+          },
+          "bookmarkCount": 0,
+          "replyCount": 0,
+          "repostCount": 0,
+          "likeCount": 1,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T22:35:51.899Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": false,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    },
+    {
+      "uri": "at://did:plc:7dpmbj2hff3qqbwyqixvtbzf/app.bsky.feed.post/3mt5k3nr6m22x",
+      "depth": 1,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:7dpmbj2hff3qqbwyqixvtbzf/app.bsky.feed.post/3mt5k3nr6m22x",
+          "cid": "bafyreihinlzmsv2euh5dxt2oxjxskzd6ojycwag333abaxc2vwwr5gtkq4",
+          "author": {
+            "did": "did:plc:7dpmbj2hff3qqbwyqixvtbzf",
+            "handle": "toneloaf.bsky.social",
+            "displayName": "Acornloaf",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:7dpmbj2hff3qqbwyqixvtbzf/bafkreid5obgtubqz5is5evhywpkmmsp43ojtajtjdyzuizyjyolglxuv6y",
+            "associated": {
+              "chat": {
+                "allowIncoming": "all"
+              },
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2024-11-16T19:28:36.684Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T20:45:08.454Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              },
+              "root": {
+                "cid": "bafyreiauxnfamqfswvldhwbwyfdvd7rnoav4ek2lublr5zcqtdghx4a74e",
+                "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+              }
+            },
+            "text": "I worried that the anti-AI crowd would consolidate around hardcore believes LLMs/genAI do not and can not work.\n\nIts a genuine issue for *everyone* since a robust and knowledgeable counter theoretically would lead to better develop, if the pro voices won(which they currently are winning by a lot)"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 0,
+          "repostCount": 0,
+          "likeCount": 18,
+          "quoteCount": 3,
+          "indexedAt": "2026-08-15T20:45:09.272Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": false,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    }
+  ],
+  "threadgate": {
+    "uri": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.threadgate/3mt5jmqs4n22n",
+    "cid": "bafyreihna437um2xzdnnzayn2wl3o5qpu6hbzczzez5tp5y4imivgsny64",
+    "record": {
+      "$type": "app.bsky.feed.threadgate",
+      "allow": [
+        {
+          "$type": "app.bsky.feed.threadgate#followerRule"
+        },
+        {
+          "$type": "app.bsky.feed.threadgate#followingRule"
+        },
+        {
+          "$type": "app.bsky.feed.threadgate#mentionRule"
+        }
+      ],
+      "createdAt": "2026-08-15T20:36:48.319Z",
+      "hiddenReplies": [],
+      "post": "at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n"
+    },
+    "lists": []
+  }
+}

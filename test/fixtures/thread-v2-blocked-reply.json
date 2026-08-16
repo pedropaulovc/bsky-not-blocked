@@ -1,0 +1,69 @@
+{
+  "hasOtherReplies": false,
+  "thread": [
+    {
+      "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22",
+      "depth": -1,
+      "value": {
+        "author": {
+          "did": "did:plc:zntngpowgd6rorjt3haywj36"
+        },
+        "$type": "app.bsky.unspecced.defs#threadItemBlocked"
+      }
+    },
+    {
+      "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5n422h422o",
+      "depth": 0,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5n422h422o",
+          "cid": "bafyreigf2kgwduehszue23f2hasyvt4kbank2bvoi6su7beib6xsqizhea",
+          "author": {
+            "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+            "handle": "skity.bsky.social",
+            "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+            "associated": {
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2025-01-25T06:00:06.543Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2026-08-15T21:39:02.569Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreih2px2jszv3qrnjwmw7j5beilkfeap2vr6zjsz7znrjhgr6qk7xy4",
+                "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22"
+              },
+              "root": {
+                "cid": "bafyreih2px2jszv3qrnjwmw7j5beilkfeap2vr6zjsz7znrjhgr6qk7xy4",
+                "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22"
+              }
+            },
+            "text": "I like all the nübs who act as scabs then cry when they get called out. Its my favorite part of computing 🙄🙄🙄🤢🤢🤢🤮🤮🤮🤮"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 0,
+          "repostCount": 0,
+          "likeCount": 0,
+          "quoteCount": 0,
+          "indexedAt": "2026-08-15T21:39:03.378Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": false,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    }
+  ]
+}

@@ -1,0 +1,647 @@
+{
+  "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y": {
+    "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y",
+    "cid": "bafyreigsta2e4b3mvtafeiqai6p2gmjupm4kqfw4x2tivctxnx75kwglla",
+    "author": {
+      "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+      "handle": "skity.bsky.social",
+      "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+      "associated": {
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [],
+      "createdAt": "2025-01-25T06:00:06.543Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T04:30:05.715Z",
+      "langs": [
+        "en"
+      ],
+      "reply": {
+        "parent": {
+          "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+          "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m"
+        },
+        "root": {
+          "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+          "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m"
+        }
+      },
+      "text": "\"Coding is largely solved\" we haven't even managed to produce good code at an enterprise level at all so far. Show me code that is shelf stable and 100% bug free, and I will show you that its the equivalent mechanical chess player. The fact that zero people are using AI to check for bugs is largely"
+    },
+    "bookmarkCount": 2,
+    "replyCount": 13,
+    "repostCount": 2,
+    "likeCount": 26,
+    "quoteCount": 6,
+    "indexedAt": "2026-08-15T04:30:06.472Z",
+    "labels": []
+  },
+  "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22": {
+    "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22",
+    "cid": "bafyreih2px2jszv3qrnjwmw7j5beilkfeap2vr6zjsz7znrjhgr6qk7xy4",
+    "author": {
+      "did": "did:plc:zntngpowgd6rorjt3haywj36",
+      "handle": "aly.codes",
+      "displayName": "aly",
+      "pronouns": "she/they",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:zntngpowgd6rorjt3haywj36/bafkreiec2otdkezi3ulrljie6eukfwat6hreiff4ighepc3njynll6mbtm",
+      "associated": {
+        "chat": {
+          "allowIncoming": "all",
+          "allowGroupInvites": "following"
+        },
+        "activitySubscription": {
+          "allowSubscriptions": "mutuals"
+        },
+        "germ": {
+          "showButtonTo": "usersIFollow",
+          "messageMeUrl": "https://landing.ger.mx/newUser"
+        }
+      },
+      "labels": [],
+      "createdAt": "2025-04-10T03:29:11.873Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T21:04:40.862Z",
+      "embed": {
+        "$type": "app.bsky.embed.record",
+        "record": {
+          "cid": "bafyreifsdifuz6daw5lg57c5ig2ej4gaqxib4bly22myoxycqa6ced4oru",
+          "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm5lfak2y"
+        }
+      },
+      "langs": [
+        "en"
+      ],
+      "text": "extremely normal analogy to make",
+      "via": "Witchsky Web App"
+    },
+    "embed": {
+      "record": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm5lfak2y",
+        "blocked": true,
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj"
+        },
+        "$type": "app.bsky.embed.record#viewBlocked"
+      },
+      "$type": "app.bsky.embed.record#view"
+    },
+    "bookmarkCount": 0,
+    "replyCount": 1,
+    "repostCount": 0,
+    "likeCount": 2,
+    "quoteCount": 0,
+    "indexedAt": "2026-08-15T21:04:41.371Z",
+    "labels": []
+  },
+  "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm5lfak2y": {
+    "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm5lfak2y",
+    "cid": "bafyreifsdifuz6daw5lg57c5ig2ej4gaqxib4bly22myoxycqa6ced4oru",
+    "author": {
+      "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+      "handle": "skity.bsky.social",
+      "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+      "associated": {
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [],
+      "createdAt": "2025-01-25T06:00:06.543Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T04:30:05.716Z",
+      "langs": [
+        "en"
+      ],
+      "reply": {
+        "parent": {
+          "cid": "bafyreigsta2e4b3mvtafeiqai6p2gmjupm4kqfw4x2tivctxnx75kwglla",
+          "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y"
+        },
+        "root": {
+          "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+          "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m"
+        }
+      },
+      "text": "due to the fact that people who use generative LLM AI to \"do all their work\" are talentless hacks who don't know what they are doing and simply are happy to be included in something. LLM users are the ICE agents of the computing world."
+    },
+    "bookmarkCount": 1,
+    "replyCount": 4,
+    "repostCount": 2,
+    "likeCount": 30,
+    "quoteCount": 2,
+    "indexedAt": "2026-08-15T04:30:06.499Z",
+    "labels": []
+  },
+  "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s": {
+    "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s",
+    "cid": "bafyreihdf7ey5mxbhoqel4grwpupw6ewjqwlv7jrjwmrfwmtaaouq7tb2e",
+    "author": {
+      "did": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2",
+      "handle": "gingerjet.net",
+      "displayName": "Tim Shea",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:vy6o7yemm3w4nzy4pxnvwnm2/bafkreibxi27tk7kcvnjkp6jncxe4gb3vuem7p4mgexukun6mebixjaqjky",
+      "associated": {
+        "chat": {
+          "allowIncoming": "none"
+        },
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [
+        {
+          "src": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2",
+          "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.actor.profile/self",
+          "cid": "bafyreiebptmutmx4knu7ucxg2py5yfvru5yongdosk3vr3mybwhvwmbb7y",
+          "val": "!no-unauthenticated",
+          "cts": "1970-01-01T00:00:00.000Z"
+        }
+      ],
+      "createdAt": "2023-06-13T16:14:22.177Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T18:48:11.612Z",
+      "embed": {
+        "$type": "app.bsky.embed.record",
+        "record": {
+          "cid": "bafyreigsta2e4b3mvtafeiqai6p2gmjupm4kqfw4x2tivctxnx75kwglla",
+          "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y"
+        }
+      },
+      "langs": [
+        "en"
+      ],
+      "text": "I laughed out loud at \"shelf stable\" as if source code was canned tuna"
+    },
+    "embed": {
+      "record": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y",
+        "blocked": true,
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj"
+        },
+        "$type": "app.bsky.embed.record#viewBlocked"
+      },
+      "$type": "app.bsky.embed.record#view"
+    },
+    "bookmarkCount": 0,
+    "replyCount": 2,
+    "repostCount": 0,
+    "likeCount": 1,
+    "quoteCount": 0,
+    "indexedAt": "2026-08-15T18:48:11.967Z",
+    "labels": []
+  },
+  "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5e6qzvt22s": {
+    "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5e6qzvt22s",
+    "cid": "bafyreibhxwxp7nlstnbnusptkfvyb4g3yegwygnvug4jhajceoqubejbka",
+    "author": {
+      "did": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2",
+      "handle": "gingerjet.net",
+      "displayName": "Tim Shea",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:vy6o7yemm3w4nzy4pxnvwnm2/bafkreibxi27tk7kcvnjkp6jncxe4gb3vuem7p4mgexukun6mebixjaqjky",
+      "associated": {
+        "chat": {
+          "allowIncoming": "none"
+        },
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [
+        {
+          "src": "did:plc:vy6o7yemm3w4nzy4pxnvwnm2",
+          "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.actor.profile/self",
+          "cid": "bafyreiebptmutmx4knu7ucxg2py5yfvru5yongdosk3vr3mybwhvwmbb7y",
+          "val": "!no-unauthenticated",
+          "cts": "1970-01-01T00:00:00.000Z"
+        }
+      ],
+      "createdAt": "2023-06-13T16:14:22.177Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T18:59:30.099Z",
+      "embed": {
+        "$type": "app.bsky.embed.images",
+        "images": [
+          {
+            "alt": "some incoherent rambling that is not worth your time",
+            "aspectRatio": {
+              "height": 392,
+              "width": 1222
+            },
+            "image": {
+              "$type": "blob",
+              "ref": {
+                "$link": "bafkreifb3khqkp65g7qdfzq5bklapiiwibznvitvqeifslqpjfg4jlxyze"
+              },
+              "mimeType": "image/jpeg",
+              "size": 223650
+            }
+          }
+        ]
+      },
+      "langs": [
+        "en"
+      ],
+      "reply": {
+        "parent": {
+          "cid": "bafyreihdf7ey5mxbhoqel4grwpupw6ewjqwlv7jrjwmrfwmtaaouq7tb2e",
+          "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s"
+        },
+        "root": {
+          "cid": "bafyreihdf7ey5mxbhoqel4grwpupw6ewjqwlv7jrjwmrfwmtaaouq7tb2e",
+          "uri": "at://did:plc:vy6o7yemm3w4nzy4pxnvwnm2/app.bsky.feed.post/3mt5dkjy3v22s"
+        }
+      },
+      "text": "Every time some engineer pulls a \"I've been doing this for 30 years\" take I know their opinion is not worth listening too and I move on with my day.  Like I'm doing now."
+    },
+    "embed": {
+      "images": [
+        {
+          "thumb": "https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:vy6o7yemm3w4nzy4pxnvwnm2/bafkreifb3khqkp65g7qdfzq5bklapiiwibznvitvqeifslqpjfg4jlxyze",
+          "fullsize": "https://cdn.bsky.app/img/feed_fullsize/plain/did:plc:vy6o7yemm3w4nzy4pxnvwnm2/bafkreifb3khqkp65g7qdfzq5bklapiiwibznvitvqeifslqpjfg4jlxyze",
+          "alt": "some incoherent rambling that is not worth your time",
+          "aspectRatio": {
+            "height": 392,
+            "width": 1222
+          }
+        }
+      ],
+      "$type": "app.bsky.embed.images#view"
+    },
+    "bookmarkCount": 0,
+    "replyCount": 1,
+    "repostCount": 0,
+    "likeCount": 0,
+    "quoteCount": 0,
+    "indexedAt": "2026-08-15T18:59:31.373Z",
+    "labels": []
+  },
+  "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.feed.post/3mt4g5udsnc2l": {
+    "uri": "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.feed.post/3mt4g5udsnc2l",
+    "cid": "bafyreignkgb4isjfqfooix64g57uipskdphtns6o565i5lxmyc34jgxwfu",
+    "author": {
+      "did": "did:plc:fcegz3u2hkgigbiqwfvh7spe",
+      "handle": "her.toy.cybernetic.gay",
+      "displayName": "Dizzy Dragon",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:fcegz3u2hkgigbiqwfvh7spe/bafkreihijwfb24efeyjxf6dic4wqaeesl4pf6yqvyj47b57yy2g2n5hp7q",
+      "associated": {
+        "chat": {
+          "allowIncoming": "none",
+          "allowGroupInvites": "none"
+        },
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [
+        {
+          "src": "did:plc:fcegz3u2hkgigbiqwfvh7spe",
+          "uri": "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.actor.profile/self",
+          "cid": "bafyreib2p7geac7gcb7dexmntibl5obfljo42i6umbk7qkkyfnal64ipnu",
+          "val": "!no-unauthenticated",
+          "cts": "1970-01-01T00:00:00.000Z"
+        }
+      ],
+      "createdAt": "2023-09-17T08:38:15.287Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T10:02:07.761Z",
+      "embed": {
+        "$type": "app.bsky.embed.record",
+        "record": {
+          "cid": "bafyreigsta2e4b3mvtafeiqai6p2gmjupm4kqfw4x2tivctxnx75kwglla",
+          "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y"
+        }
+      },
+      "langs": [
+        "en"
+      ],
+      "text": "> The fact that zero people are using AI to check for bugs\n\nfalse"
+    },
+    "embed": {
+      "record": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y",
+        "blocked": true,
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj"
+        },
+        "$type": "app.bsky.embed.record#viewBlocked"
+      },
+      "$type": "app.bsky.embed.record#view"
+    },
+    "bookmarkCount": 0,
+    "replyCount": 2,
+    "repostCount": 0,
+    "likeCount": 28,
+    "quoteCount": 0,
+    "indexedAt": "2026-08-15T10:02:08.171Z",
+    "labels": []
+  },
+  "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.feed.post/3mt4vp3syas2f": {
+    "uri": "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.feed.post/3mt4vp3syas2f",
+    "cid": "bafyreicnpdyiknyp5qo7hlva5kvr3phxanobo7xgsewgebemk67yrv5vfy",
+    "author": {
+      "did": "did:plc:fcegz3u2hkgigbiqwfvh7spe",
+      "handle": "her.toy.cybernetic.gay",
+      "displayName": "Dizzy Dragon",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:fcegz3u2hkgigbiqwfvh7spe/bafkreihijwfb24efeyjxf6dic4wqaeesl4pf6yqvyj47b57yy2g2n5hp7q",
+      "associated": {
+        "chat": {
+          "allowIncoming": "none",
+          "allowGroupInvites": "none"
+        },
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [
+        {
+          "src": "did:plc:fcegz3u2hkgigbiqwfvh7spe",
+          "uri": "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.actor.profile/self",
+          "cid": "bafyreib2p7geac7gcb7dexmntibl5obfljo42i6umbk7qkkyfnal64ipnu",
+          "val": "!no-unauthenticated",
+          "cts": "1970-01-01T00:00:00.000Z"
+        }
+      ],
+      "createdAt": "2023-09-17T08:38:15.287Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T14:40:12.147Z",
+      "embed": {
+        "$type": "app.bsky.embed.record",
+        "record": {
+          "cid": "bafyreignlcobarl7zygeuzawjdp2tfy3s5ea7wvh74345dmr257ptkhfna",
+          "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt4slqvr7s2b"
+        }
+      },
+      "langs": [
+        "en"
+      ],
+      "reply": {
+        "parent": {
+          "cid": "bafyreig5xp7wh2wtomnva6d4yxo5cmsk4iuaehexgrlolsopgegwiqysfq",
+          "uri": "at://did:plc:izc4epknbvpf2hk3gq7evk4k/app.bsky.feed.post/3mt4roo2qnk2s"
+        },
+        "root": {
+          "cid": "bafyreignkgb4isjfqfooix64g57uipskdphtns6o565i5lxmyc34jgxwfu",
+          "uri": "at://did:plc:fcegz3u2hkgigbiqwfvh7spe/app.bsky.feed.post/3mt4g5udsnc2l"
+        }
+      },
+      "text": "Oh apparently that's zero people, not counting anyone who does"
+    },
+    "embed": {
+      "record": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt4slqvr7s2b",
+        "blocked": true,
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj"
+        },
+        "$type": "app.bsky.embed.record#viewBlocked"
+      },
+      "$type": "app.bsky.embed.record#view"
+    },
+    "bookmarkCount": 0,
+    "replyCount": 2,
+    "repostCount": 0,
+    "likeCount": 5,
+    "quoteCount": 0,
+    "indexedAt": "2026-08-15T14:40:11.764Z",
+    "labels": []
+  },
+  "at://did:plc:x3yt3sdtbvlhizqx5jh3hwuf/app.bsky.feed.post/3mt4ieldq7k25": {
+    "uri": "at://did:plc:x3yt3sdtbvlhizqx5jh3hwuf/app.bsky.feed.post/3mt4ieldq7k25",
+    "cid": "bafyreihnzpgkiev5wujbzgnjmt3fbtu56hfuzsxugydzp5ckkgzc44nu44",
+    "author": {
+      "did": "did:plc:x3yt3sdtbvlhizqx5jh3hwuf",
+      "handle": "axeghostgame.bsky.social",
+      "displayName": "Axe Ghost. On Steam!",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:x3yt3sdtbvlhizqx5jh3hwuf/bafkreiew5qt3bfzdd4kvtmxscflabgu4e6yx6cbrkp5udmeatywu74kl64",
+      "associated": {
+        "chat": {
+          "allowIncoming": "all"
+        },
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [],
+      "createdAt": "2024-09-13T19:05:59.708Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T10:41:40.687Z",
+      "langs": [
+        "en"
+      ],
+      "reply": {
+        "parent": {
+          "cid": "bafyreigsta2e4b3mvtafeiqai6p2gmjupm4kqfw4x2tivctxnx75kwglla",
+          "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y"
+        },
+        "root": {
+          "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+          "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m"
+        }
+      },
+      "text": "\"zero people are using AI to check for bugs\" \n\nlol come on."
+    },
+    "bookmarkCount": 0,
+    "replyCount": 4,
+    "repostCount": 0,
+    "likeCount": 25,
+    "quoteCount": 0,
+    "indexedAt": "2026-08-15T10:41:41.468Z",
+    "labels": []
+  },
+  "at://did:plc:kpxj7utcy6mjv4rmzitnnrmv/app.bsky.feed.post/3mt4rviubi227": {
+    "uri": "at://did:plc:kpxj7utcy6mjv4rmzitnnrmv/app.bsky.feed.post/3mt4rviubi227",
+    "cid": "bafyreihqldp4xqdx2qi5uc6c677glq4e5hiahwi6twvxwavfzrbbdiw56y",
+    "author": {
+      "did": "did:plc:kpxj7utcy6mjv4rmzitnnrmv",
+      "handle": "ver.ooo",
+      "displayName": "ver 🗿",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:kpxj7utcy6mjv4rmzitnnrmv/bafkreiggqj7ygcphe5usk3g4ozg5ezfdijb3tufdfm3wjx7ejp6sdpxo2a",
+      "associated": {
+        "chat": {
+          "allowIncoming": "following",
+          "allowGroupInvites": "following"
+        },
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [],
+      "createdAt": "2023-05-29T17:24:02.397Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T13:32:12.183Z",
+      "embed": {
+        "$type": "app.bsky.embed.record",
+        "record": {
+          "cid": "bafyreiblbfdisng7ctaelobn4qlkzohviwlzsy6ymjwyei3azhfghudeiu",
+          "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt4qneztrs2b"
+        }
+      },
+      "langs": [
+        "en"
+      ],
+      "text": "Look up Dunning Krueger to understand the mentality that you are suffering from."
+    },
+    "embed": {
+      "record": {
+        "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt4qneztrs2b",
+        "blocked": true,
+        "author": {
+          "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj"
+        },
+        "$type": "app.bsky.embed.record#viewBlocked"
+      },
+      "$type": "app.bsky.embed.record#view"
+    },
+    "bookmarkCount": 0,
+    "replyCount": 2,
+    "repostCount": 0,
+    "likeCount": 19,
+    "quoteCount": 2,
+    "indexedAt": "2026-08-15T13:32:12.366Z",
+    "labels": []
+  },
+  "at://did:plc:aldgcbb337jg7cvzogh37p64/app.bsky.feed.post/3mt4q4dxz4c22": {
+    "uri": "at://did:plc:aldgcbb337jg7cvzogh37p64/app.bsky.feed.post/3mt4q4dxz4c22",
+    "cid": "bafyreigvrpgvfqur3oy25zeeyz63i6zktae3wx6khwpfexo7yu2ckzedoi",
+    "author": {
+      "did": "did:plc:aldgcbb337jg7cvzogh37p64",
+      "handle": "redcloakedcrow.bsky.social",
+      "displayName": "Pavle",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:aldgcbb337jg7cvzogh37p64/bafkreiebodsd44rkl6daxt75ks2ud2y3bphcw3hqdbsooogesucoylken4",
+      "associated": {
+        "chat": {
+          "allowIncoming": "all",
+          "allowGroupInvites": "all"
+        },
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [],
+      "createdAt": "2023-08-24T16:58:35.393Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T13:00:14.452Z",
+      "langs": [
+        "en"
+      ],
+      "reply": {
+        "parent": {
+          "cid": "bafyreigsta2e4b3mvtafeiqai6p2gmjupm4kqfw4x2tivctxnx75kwglla",
+          "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y"
+        },
+        "root": {
+          "cid": "bafyreigf6pwrv4vpohxaciymdyxf4ujgwhanyz64jsis6xmwfut4zdcyr4",
+          "uri": "at://did:plc:uashgn65n5z7aqwk5cbuba5c/app.bsky.feed.post/3mt2iynhahk2m"
+        }
+      },
+      "text": "I'm not saying this to dunk on you, but this is a really uneducated take. There are literally thousands of CVEs (critical bugs) that've been discovered through the use of LLMs, including some that've been hidden in security-minded software like FreeBSD for 20+ years."
+    },
+    "bookmarkCount": 0,
+    "replyCount": 1,
+    "repostCount": 0,
+    "likeCount": 5,
+    "quoteCount": 0,
+    "indexedAt": "2026-08-15T13:00:13.270Z",
+    "labels": []
+  },
+  "at://did:plc:6syfl54geeqphn2u22yegpbl/app.bsky.feed.post/3msyuyodimc2a": {
+    "uri": "at://did:plc:6syfl54geeqphn2u22yegpbl/app.bsky.feed.post/3msyuyodimc2a",
+    "cid": "bafyreibr7fetbveiz4dspar63titaub6vbjy7j5rs5smanzmahabfnavuq",
+    "author": {
+      "did": "did:plc:6syfl54geeqphn2u22yegpbl",
+      "handle": "vegasdude83.bsky.social",
+      "displayName": "Roblee14",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:6syfl54geeqphn2u22yegpbl/bafkreieraosa24dd3mhyynmeqa6f4xraihl6wnz7okhnp4pw4en4mwhq44",
+      "associated": {
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [],
+      "createdAt": "2024-11-21T04:44:46.672Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-14T00:17:00.846Z",
+      "langs": [
+        "en"
+      ],
+      "text": "Joe Biden was not a perfect president but l never lost a day of sleep worrying about whether we were one bad day away from WW3 or we were heading for another great depression"
+    },
+    "bookmarkCount": 5,
+    "replyCount": 67,
+    "repostCount": 258,
+    "likeCount": 1315,
+    "quoteCount": 11,
+    "indexedAt": "2026-08-14T00:17:01.565Z",
+    "labels": []
+  },
+  "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5n422h422o": {
+    "uri": "at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5n422h422o",
+    "cid": "bafyreigf2kgwduehszue23f2hasyvt4kbank2bvoi6su7beib6xsqizhea",
+    "author": {
+      "did": "did:plc:v4sghlfldhg56z6ckpnw2kvj",
+      "handle": "skity.bsky.social",
+      "displayName": "Steph Curvy (101010) priestess of the holy order ∆🗯️💫💥🫯🏳️‍🌈🏳️‍⚧️",
+      "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:v4sghlfldhg56z6ckpnw2kvj/bafkreicfekfsale7llpook3rxtefrr2o46btulnw7sz6olknl5fwycisny",
+      "associated": {
+        "activitySubscription": {
+          "allowSubscriptions": "followers"
+        }
+      },
+      "labels": [],
+      "createdAt": "2025-01-25T06:00:06.543Z"
+    },
+    "record": {
+      "$type": "app.bsky.feed.post",
+      "createdAt": "2026-08-15T21:39:02.569Z",
+      "langs": [
+        "en"
+      ],
+      "reply": {
+        "parent": {
+          "cid": "bafyreih2px2jszv3qrnjwmw7j5beilkfeap2vr6zjsz7znrjhgr6qk7xy4",
+          "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22"
+        },
+        "root": {
+          "cid": "bafyreih2px2jszv3qrnjwmw7j5beilkfeap2vr6zjsz7znrjhgr6qk7xy4",
+          "uri": "at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22"
+        }
+      },
+      "text": "I like all the nübs who act as scabs then cry when they get called out. Its my favorite part of computing 🙄🙄🙄🤢🤢🤢🤮🤮🤮🤮"
+    },
+    "bookmarkCount": 0,
+    "replyCount": 0,
+    "repostCount": 0,
+    "likeCount": 0,
+    "quoteCount": 0,
+    "indexedAt": "2026-08-15T21:39:03.378Z",
+    "labels": []
+  }
+}
