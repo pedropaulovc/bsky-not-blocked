@@ -51,8 +51,10 @@ const SOURCES = [
 ];
 
 const getJson = (url) => fetch(url, { signal: AbortSignal.timeout(20_000) }).then((r) => r.json());
-const write = (name, data) =>
+const write = (name, data) => {
+  assertClean(name, data);
   fs.writeFileSync(path.join(FIXTURES, name), `${JSON.stringify(data, null, 2)}\n`);
+};
 
 // ------------------------------------------------------------ 1. capture
 
@@ -162,8 +164,27 @@ function rewriteString(value, handles) {
   return out;
 }
 
-/** Keys whose values are free text written by a person, replaced wholesale. */
-const TEXT_KEYS = new Set(['text', 'description', 'alt', 'title']);
+const fakeUrl = (value) => alias('url', value, (n) => `https://example.com/link/${pad(n, 4)}`);
+
+/*
+ * Keys whose string values are protocol structure rather than anything a person
+ * wrote: identifiers, timestamps, enums. They still go through rewriteString,
+ * which maps any DID, CID or record key inside them.
+ *
+ * Everything not listed here is treated as personal content and replaced. That
+ * direction matters: an allowlist fails safe when Bluesky adds a field, whereas
+ * enumerating the fields to scrub leaks each new one. It already did — a
+ * profile's `messageMeUrl` and `pronouns` survived the first version of this.
+ */
+const STRUCTURAL_KEYS = new Set([
+  '$type', '$link', 'uri', 'cid', 'did', 'src', 'val', 'via', 'mimeType',
+  'createdAt', 'indexedAt', 'cts', 'expiresAt', 'lang',
+  'allowIncoming', 'allowSubscriptions', 'allowGroupInvites', 'showButtonTo',
+]);
+
+const isUrl = (value) => /^https?:\/\//.test(value);
+// Blob URLs are rebuilt from the DID and CID we already map, so they stay.
+const isBlobUrl = (value) => value.startsWith('https://cdn.bsky.app/img/');
 
 function anonymize(node, handles) {
   if (Array.isArray(node)) return node.map((child) => anonymize(child, handles));
@@ -173,12 +194,25 @@ function anonymize(node, handles) {
   const out = {};
   for (const [key, value] of Object.entries(node)) {
     if (typeof value !== 'string' || !value) out[key] = anonymize(value, handles);
+    else if (STRUCTURAL_KEYS.has(key)) out[key] = rewriteString(value, handles);
     else if (key === 'handle') out[key] = fakeHandle(value);
     else if (key === 'displayName') out[key] = fakeName(value);
-    else if (TEXT_KEYS.has(key)) out[key] = fakeText(value);
-    else out[key] = rewriteString(value, handles);
+    else if (isUrl(value)) out[key] = isBlobUrl(value) ? rewriteString(value, handles) : fakeUrl(value);
+    else out[key] = fakeText(value);
   }
   return out;
+}
+
+/** Refuse to write anything that still looks like live data. */
+function assertClean(label, data) {
+  const json = JSON.stringify(data);
+  const leaks = [
+    ...(json.match(/https?:\\?\/\\?\/(?!cdn\.bsky\.app\/img\/|example\.com\/link\/)[^"\\]+/g) ?? []),
+    ...(json.match(/did:plc:(?!a{20}\d{4})[a-z0-9]+/g) ?? []),
+  ];
+  if (leaks.length) {
+    throw new Error(`${label} still contains live data: ${[...new Set(leaks)].slice(0, 5).join(', ')}`);
+  }
 }
 
 // ------------------------------------------------------------------- run
