@@ -21,7 +21,9 @@ const files = fs.readdirSync(FIXTURES).filter((name) => name.endsWith('.json'));
 const read = (name) => fs.readFileSync(path.join(FIXTURES, name), 'utf8');
 
 /** Synthetic shapes the recorder produces, mirrored here deliberately. */
-const SYNTHETIC_DID = /^did:plc:a{20}\d{4}$/;
+// Any DID method, not just the two Bluesky issues today — a method that is
+// merely unenumerated must fail the check rather than skip it.
+const SYNTHETIC_DID = /^did:(plc:a{20}\d{4}|web:host\d{4}\.example|[a-z]+:id\d{4})$/;
 const SYNTHETIC_HANDLE = /^user\d{4}\.example$/;
 const ALLOWED_URL = /^https:\/\/(cdn\.bsky\.app\/img\/|example\.com\/link\/)/;
 
@@ -39,14 +41,13 @@ test('every fixture is present and parses', () => {
   for (const name of files) assert.doesNotThrow(() => JSON.parse(read(name)), name);
 });
 
-test('no fixture contains a real DID', () => {
+test('no fixture contains a real DID, whatever the method', () => {
+  // Scans every `did:` token rather than the known methods: a did:web embeds
+  // the account's own domain, and both `did` and `uri` are structural fields,
+  // so an unrecognised method would slip past the free-text check too.
   for (const name of files) {
-    for (const did of read(name).match(/did:plc:[a-z0-9]+/g) ?? []) {
+    for (const did of read(name).match(/did:[a-z]+:[^"/\\\s]+/g) ?? []) {
       assert.match(did, SYNTHETIC_DID, `${name} leaks a live DID`);
-    }
-    // did:web embeds the account's own domain, so it leaks even more directly.
-    for (const did of read(name).match(/did:web:[a-zA-Z0-9.:%-]+/g) ?? []) {
-      assert.match(did, /^did:web:host\d{4}\.example$/, `${name} leaks a live did:web domain`);
     }
   }
 });

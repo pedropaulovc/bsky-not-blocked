@@ -134,10 +134,19 @@ function alias(kind, value, make) {
 
 const pad = (n, width) => String(n).padStart(width, '0');
 
-// did:plc identifiers are 24 characters after the prefix.
-const fakeDid = (value) => alias('did', value, (n) => `did:plc:${'a'.repeat(20)}${pad(n, 4)}`);
-// did:web identifiers embed the account's own domain, so they need replacing too.
-const fakeWebDid = (value) => alias('did', value, (n) => `did:web:host${pad(n, 4)}.example`);
+/*
+ * Every DID method, not just the two Bluesky issues today. did:plc is opaque,
+ * but did:web embeds the account's own domain, and a method nobody has thought
+ * of yet must not pass through simply because it was not enumerated. The
+ * replacement keeps the method, so a fixture still exercises the right parsing.
+ */
+const fakeDid = (value) =>
+  alias('did', value, (n) => {
+    const method = value.split(':')[1];
+    if (method === 'plc') return `did:plc:${'a'.repeat(20)}${pad(n, 4)}`; // 24 chars, as PLC requires
+    if (method === 'web') return `did:web:host${pad(n, 4)}.example`;
+    return `did:${method}:id${pad(n, 4)}`;
+  });
 // Record keys are 13-character TIDs.
 const fakeRkey = (value) => alias('rkey', value, (n) => `3${'a'.repeat(8)}${pad(n, 4)}`);
 const fakeCid = (value) => alias('cid', value, (n) => `bafyrei${'a'.repeat(45)}${pad(n, 4)}`);
@@ -159,8 +168,7 @@ function collectHandles(node, found = new Set()) {
 
 function rewriteString(value, handles) {
   let out = value
-    .replace(/did:plc:[a-z0-9]+/g, (did) => fakeDid(did))
-    .replace(/did:web:[a-zA-Z0-9.:%-]+/g, (did) => fakeWebDid(did))
+    .replace(/did:[a-z]+:[a-zA-Z0-9._%-]+(?::[a-zA-Z0-9._%-]+)*/g, (did) => fakeDid(did))
     .replace(/\bbaf[a-z0-9]{20,}/g, (cid) => fakeCid(cid))
     .replace(/(app\.bsky\.[a-z.]+\/)([a-z0-9]{13})/g, (_, prefix, rkey) => prefix + fakeRkey(rkey));
   for (const handle of handles) out = out.split(handle).join(fakeHandle(handle));
@@ -239,13 +247,15 @@ function anonymize(node, handles) {
   return out;
 }
 
+/** The shapes fakeDid produces, for any method. */
+const SYNTHETIC_DID = /^did:(plc:a{20}\d{4}|web:host\d{4}\.example|[a-z]+:id\d{4})$/;
+
 /** Refuse to write anything that still looks like live data. */
 function assertClean(label, data) {
   const json = JSON.stringify(data);
   const leaks = [
     ...(json.match(/https?:\\?\/\\?\/(?!cdn\.bsky\.app\/img\/|example\.com\/link\/)[^"\\]+/g) ?? []),
-    ...(json.match(/did:plc:(?!a{20}\d{4})[a-z0-9]+/g) ?? []),
-    ...(json.match(/did:web:(?!host\d{4}\.example)[a-zA-Z0-9.:%-]+/g) ?? []),
+    ...(json.match(/did:[a-z]+:[^"/\\\s]+/g) ?? []).filter((did) => !SYNTHETIC_DID.test(did)),
     // Anything still on a real clock rather than the synthetic epoch.
     ...(json.match(/"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z"/g) ?? []).filter(
       (stamp) => !stamp.startsWith('"2020-'),
