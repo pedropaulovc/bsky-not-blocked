@@ -75,6 +75,8 @@ Naming those posts needs an index built from the firehose. With this option on, 
 
 It is opt-in because it sends post URIs to a third party. With it off, the extension talks to nothing but Bluesky's own API.
 
+On Firefox that transmission is declared as the optional `browsingActivity` data permission and requested when you turn the switch on — decline and the switch stays off. Chrome has no equivalent, so the switch is the only gate there.
+
 ## Scope and limits
 
 - **Nothing here is privileged.** Only public, unauthenticated endpoints are used, and your session token is never read or sent. The extension asks for one permission, `storage`, to remember the toggles.
