@@ -114,6 +114,21 @@ try {
   const after = await popup.evaluate(() => chrome.storage.local.get({ deepRecovery: false }));
   check('toggling a setting persists it', before.deepRecovery === false && after.deepRecovery === true);
   await popup.close();
+
+  // Deep recovery is now on, so the opt-in path can be exercised for real. This
+  // thread is the hard case: the reply is not stubbed, it is absent from the
+  // response entirely, and only the backlink index can name it.
+  console.log('\n# hidden reply (deep recovery)');
+  const deep = await context.newPage();
+  await deep.goto('https://bsky.app/profile/aly.codes/post/3mt5l6lu5ec22', { waitUntil: 'domcontentloaded' });
+  const recovered = await deep
+    .waitForFunction(() => document.body.innerText.includes('act as scabs'), null, { timeout: 45_000 })
+    .then(() => true, () => false);
+  check('a reply the AppView dropped entirely is restored', recovered);
+  const deepStats = await deep.evaluate(() => ({ ...window.__bskyNotBlocked.stats }));
+  check('it came through the recovery path', deepStats.recoveredReplies > 0, JSON.stringify(deepStats));
+  await deep.screenshot({ path: path.join(ROOT, 'dist', 'e2e-hidden-reply.png') });
+  await deep.close();
 } finally {
   await context.close();
   fs.rmSync(profile, { recursive: true, force: true });
