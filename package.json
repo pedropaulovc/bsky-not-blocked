@@ -14,7 +14,8 @@
     "lint:firefox": "node scripts/build.mjs firefox && web-ext lint --source-dir=dist/firefox --self-hosted",
     "record-fixtures": "node scripts/record-fixtures.mjs",
     "icons": "bash scripts/make-icons.sh",
-    "store:screenshots": "node scripts/build.mjs chrome && node scripts/store-screenshots.mjs"
+    "store:screenshots": "node scripts/build.mjs chrome && node scripts/store-screenshots.mjs",
+    "dev:firefox": "node scripts/build.mjs firefox && web-ext run --source-dir=dist/firefox --start-url https://bsky.app/profile/skity.bsky.social/post/3mt5n422h422o"
   },
   "devDependencies": {
     "playwright": "^1.62.1",
