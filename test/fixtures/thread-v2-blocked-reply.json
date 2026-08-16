@@ -1,0 +1,69 @@
+{
+  "hasOtherReplies": false,
+  "thread": [
+    {
+      "uri": "at://did:plc:aaaaaaaaaaaaaaaaaaaa0011/app.bsky.feed.post/3aaaaaaaa0015",
+      "depth": -1,
+      "value": {
+        "author": {
+          "did": "did:plc:aaaaaaaaaaaaaaaaaaaa0011"
+        },
+        "$type": "app.bsky.unspecced.defs#threadItemBlocked"
+      }
+    },
+    {
+      "uri": "at://did:plc:aaaaaaaaaaaaaaaaaaaa0002/app.bsky.feed.post/3aaaaaaaa0016",
+      "depth": 0,
+      "value": {
+        "post": {
+          "uri": "at://did:plc:aaaaaaaaaaaaaaaaaaaa0002/app.bsky.feed.post/3aaaaaaaa0016",
+          "cid": "bafyreiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0027",
+          "author": {
+            "did": "did:plc:aaaaaaaaaaaaaaaaaaaa0002",
+            "handle": "user0010.example",
+            "displayName": "Test User 0009",
+            "avatar": "https://cdn.bsky.app/img/avatar/plain/did:plc:aaaaaaaaaaaaaaaaaaaa0002/bafyreiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0028",
+            "associated": {
+              "activitySubscription": {
+                "allowSubscriptions": "followers"
+              }
+            },
+            "labels": [],
+            "createdAt": "2020-01-01T00:16:00.000Z"
+          },
+          "record": {
+            "$type": "app.bsky.feed.post",
+            "createdAt": "2020-01-01T01:20:00.000Z",
+            "langs": [
+              "en"
+            ],
+            "reply": {
+              "parent": {
+                "cid": "bafyreiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0029",
+                "uri": "at://did:plc:aaaaaaaaaaaaaaaaaaaa0011/app.bsky.feed.post/3aaaaaaaa0015"
+              },
+              "root": {
+                "cid": "bafyreiaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0029",
+                "uri": "at://did:plc:aaaaaaaaaaaaaaaaaaaa0011/app.bsky.feed.post/3aaaaaaaa0015"
+              }
+            },
+            "text": "Sample post text 0020"
+          },
+          "bookmarkCount": 0,
+          "replyCount": 0,
+          "repostCount": 0,
+          "likeCount": 0,
+          "quoteCount": 0,
+          "indexedAt": "2020-01-01T01:21:00.000Z",
+          "labels": []
+        },
+        "moreParents": false,
+        "moreReplies": 0,
+        "opThread": false,
+        "hiddenByThreadgate": false,
+        "mutedByViewer": false,
+        "$type": "app.bsky.unspecced.defs#threadItemPost"
+      }
+    }
+  ]
+}

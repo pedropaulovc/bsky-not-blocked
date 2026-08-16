@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Not Blocked</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <h1>Not Blocked</h1>
+    <p class="lede">
+      Restores Bluesky posts hidden from you only because two <em>other</em> accounts
+      block each other.
+    </p>
+
+    <label class="row">
+      <input type="checkbox" id="enabled" />
+      <span>
+        <strong>Restore blocked posts</strong>
+        <small>Un-hides blocked quote posts and blocked parent posts in threads.</small>
+      </span>
+    </label>
+
+    <label class="row">
+      <input type="checkbox" id="deepRecovery" />
+      <span>
+        <strong>Recover hidden replies</strong>
+        <small>
+          Blocked replies are dropped from threads entirely, so finding them needs an
+          external backlink index. Sends post URIs to
+          <code>constellation.microcosm.blue</code>.
+        </small>
+      </span>
+    </label>
+
+    <label class="row">
+      <input type="checkbox" id="debug" />
+      <span>
+        <strong>Log to console</strong>
+        <small>Prints what was restored on each request.</small>
+      </span>
+    </label>
+
+    <p class="foot">Reload the Bluesky tab to apply changes to already-loaded posts.</p>
+    <script src="popup.js"></script>
+  </body>
+</html>
