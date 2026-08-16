@@ -37,8 +37,11 @@ if (!fs.existsSync(EXTENSION)) throw new Error('run `npm run build` first');
 fs.mkdirSync(OUT, { recursive: true });
 
 async function shoot({ width, height }, { url, expect, absent }, { withExtension, file }) {
+  // No --no-sandbox here. The e2e suite passes it because it also runs headless
+  // in CI as root, but this script only ever runs locally and points a browser at
+  // live, untrusted pages — exactly the case the sandbox exists for.
   const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'bsky-shots-'));
-  const args = ['--no-sandbox', `--window-size=${width},${height}`];
+  const args = [`--window-size=${width},${height}`];
   if (withExtension) {
     args.push(`--disable-extensions-except=${EXTENSION}`, `--load-extension=${EXTENSION}`);
   }
@@ -53,23 +56,23 @@ async function shoot({ width, height }, { url, expect, absent }, { withExtension
     const page = await context.newPage();
     await page.goto(url, { waitUntil: 'domcontentloaded' });
 
-    // Wait for the thing the shot is meant to show rather than a fixed delay, so
-    // the capture never lands on a skeleton loader.
+    // Wait for the exact thing the shot is meant to show, so a capture can never
+    // land on a skeleton loader: the restored text with the extension, and the
+    // placeholder it replaces without it. The two placeholders are worded
+    // differently — a hidden quote leaves a "Blocked" card, a dropped parent a
+    // "Post blocked" banner — which is why the wording lives in the scenario.
     //
-    // The "after" shot has an obvious marker: the restored text. The "before"
-    // shot only has one when the scenario leaves a visible placeholder — a
-    // blocked *quote* becomes a grey "Blocked" card, but a blocked *parent* is
-    // dropped from the thread with nothing standing in for it. There is no
-    // positive marker for an absence, so those wait for the page to finish
-    // painting instead.
+    // A missing marker is fatal rather than a warning. The output of this script
+    // goes on a store listing; a scenario that has gone stale would otherwise
+    // produce a plausible-looking screenshot of the wrong thing and still exit 0.
     const marker = withExtension ? expect[0] : absent;
-    const settled = marker
-      ? page.waitForFunction((text) => document.body.innerText.includes(text), marker, { timeout: 30_000 })
-      : page.waitForFunction(() => document.body.innerText.length > 500, null, { timeout: 30_000 });
+    if (!marker) throw new Error(`scenario "${url}" needs an \`absent\` marker for its before shot`);
 
-    await settled.catch(() =>
-      console.warn(`  ! ${marker ? `"${marker}" never appeared` : 'page never settled'} — is the scenario still live?`),
-    );
+    await page
+      .waitForFunction((text) => document.body.innerText.includes(text), marker, { timeout: 30_000 })
+      .catch(() => {
+        throw new Error(`"${marker}" never appeared on ${url} — is the scenario still live?`);
+      });
 
     // Bluesky anchors the scroll on the focused post, which can leave the
     // interesting part just above the fold.

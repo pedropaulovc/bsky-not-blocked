@@ -21,17 +21,24 @@ on:
         type: boolean
         default: true
 
+# Read-only by default. Only the packaging job needs to write, and only to cut a
+# Release — the store jobs run build scripts with live store credentials in the
+# environment and have no business holding a write-capable token.
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   package:
     name: package
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v5
         with:
@@ -131,7 +138,7 @@ jobs:
   chrome:
     name: Chrome Web Store
     needs: [package, preflight]
-    if: needs.preflight.outputs.chrome == 'true' && !inputs.dry_run
+    if: github.ref_type == 'tag' && needs.preflight.outputs.chrome == 'true' && !inputs.dry_run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
@@ -182,10 +189,12 @@ jobs:
   firefox:
     name: Firefox Add-ons (AMO)
     needs: [package, preflight]
-    if: needs.preflight.outputs.firefox == 'true' && !inputs.dry_run
+    if: github.ref_type == 'tag' && needs.preflight.outputs.firefox == 'true' && !inputs.dry_run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v5
         with:
@@ -199,16 +208,20 @@ jobs:
       # web-ext talks to the AMO signing API directly. `--channel=listed` submits
       # the version for public review; AMO reviews Manifest V3 extensions by hand,
       # so this returns before the version is live.
+      #
+      # No --upload-source-code: that is for submissions whose shipped files have
+      # been minified or bundled into something a reviewer cannot read. This build
+      # copies src/ verbatim, so the package already is the source.
       - name: Sign and submit
         env:
           WEB_EXT_API_KEY: ${{ secrets.AMO_JWT_ISSUER }}
           WEB_EXT_API_SECRET: ${{ secrets.AMO_JWT_SECRET }}
-        run: npx web-ext sign --source-dir=dist/firefox --channel=listed --upload-source-code=dist/firefox
+        run: npx web-ext sign --source-dir=dist/firefox --channel=listed
 
   edge:
     name: Microsoft Edge Add-ons
     needs: [package, preflight]
-    if: needs.preflight.outputs.edge == 'true' && !inputs.dry_run
+    if: github.ref_type == 'tag' && needs.preflight.outputs.edge == 'true' && !inputs.dry_run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
