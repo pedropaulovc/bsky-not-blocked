@@ -1,0 +1,90 @@
+# The extension rests on one claim about a service nobody here controls:
+# Bluesky's block filtering is scoped to the *relationship* between two records,
+# so an unauthenticated getPosts on a blocked URI still returns it in full. If
+# that ever changes, the extension stops working and no offline test would
+# notice — the fixtures would keep passing forever.
+#
+# So this runs weekly against the real AppView, plus the two browser suites that
+# check the fetch-patch actually lands before bsky.app snapshots globalThis.fetch.
+#
+# READ A FAILURE CAREFULLY. The live scenarios are real threads (test/scenarios.mjs).
+# A red run here means one of:
+#   - fixture rot: a post was deleted, or one of the two accounts lifted the block,
+#     so the scenario no longer demonstrates anything. Pick new threads.
+#   - the premise died: getPosts stopped serving blocked posts. That is the
+#     project's foundation, and the extension cannot be fixed around it.
+#   - a real regression in src/.
+# Only the third is a bug in this repo.
+name: Premise and browsers
+
+on:
+  schedule:
+    # Mondays, 07:00 UTC. GitHub disables scheduled workflows after ~60 days of
+    # repository inactivity and emails the owner; re-enable from the Actions tab.
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  premise:
+    name: live API premise
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Live AppView checks
+        run: npm run test:live
+
+  chrome:
+    name: end-to-end (Chrome)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npx playwright install --with-deps chromium
+
+      # Extensions load only in a headed browser, so the run needs a display.
+      - name: End-to-end run
+        run: xvfb-run --auto-servernum npm run test:e2e
+
+  firefox:
+    name: end-to-end (Firefox)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      # The manifest needs Firefox 140+, which is newer than the runner image
+      # ships, so the suite installs its own rather than trusting what is there.
+      - uses: browser-actions/setup-firefox@v1
+        with:
+          firefox-version: latest
+
+      - uses: browser-actions/setup-geckodriver@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: End-to-end run
+        run: xvfb-run --auto-servernum npm run test:e2e:firefox

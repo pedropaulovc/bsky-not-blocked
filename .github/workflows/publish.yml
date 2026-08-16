@@ -1,0 +1,262 @@
+# Ships a tagged version to the three stores.
+#
+# IMPORTANT — this workflow only ever *updates* a listing that already exists.
+# Every store requires the first submission to be made by hand in its dashboard,
+# because all three ask for things no API accepts: a developer agreement signed
+# by a person, screenshots, category and pricing metadata, and (Chrome) a
+# one-time 5 USD registration fee. See store/PUBLISHING.md for that walkthrough.
+#
+# Until credentials are configured the store jobs skip themselves, so tagging a
+# release still builds, checksums and attaches the zips to a GitHub Release.
+# Each store turns on independently as its secrets land.
+name: Publish
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Build and check credentials without submitting to any store'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    name: package
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      # package.json is the single source of truth — scripts/build.mjs stamps it
+      # into both manifests. A tag that disagrees with it would ship a version
+      # the stores disagree about, so fail loudly rather than guess which wins.
+      - name: Resolve and verify version
+        id: version
+        run: |
+          version="$(node -p 'require("./package.json").version')"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [ "${GITHUB_REF_TYPE}" = "tag" ] && [ "${GITHUB_REF_NAME}" != "v$version" ]; then
+            echo "::error::tag ${GITHUB_REF_NAME} does not match package.json version $version (expected v$version)"
+            exit 1
+          fi
+
+      - name: Offline tests
+        run: npm test
+
+      - name: web-ext lint
+        run: npm run lint:firefox
+
+      - run: npm run build
+
+      - name: Checksums
+        run: |
+          cd dist
+          sha256sum ./*.zip | tee SHA256SUMS
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ steps.version.outputs.version }}
+          path: |
+            dist/*.zip
+            dist/SHA256SUMS
+          if-no-files-found: error
+
+      - name: GitHub Release
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/*.zip dist/SHA256SUMS --generate-notes --verify-tag
+
+  # The `secrets` context cannot be read from a job-level `if`, so the checks
+  # happen in a job whose outputs the store jobs can gate on. Nothing secret is
+  # printed — only whether each set is complete.
+  preflight:
+    name: preflight
+    runs-on: ubuntu-latest
+    outputs:
+      chrome: ${{ steps.check.outputs.chrome }}
+      firefox: ${{ steps.check.outputs.firefox }}
+      edge: ${{ steps.check.outputs.edge }}
+    steps:
+      - id: check
+        env:
+          CWS_CLIENT_ID: ${{ secrets.CWS_CLIENT_ID }}
+          CWS_CLIENT_SECRET: ${{ secrets.CWS_CLIENT_SECRET }}
+          CWS_REFRESH_TOKEN: ${{ secrets.CWS_REFRESH_TOKEN }}
+          CWS_PUBLISHER_ID: ${{ secrets.CWS_PUBLISHER_ID }}
+          CWS_EXTENSION_ID: ${{ secrets.CWS_EXTENSION_ID }}
+          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
+          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+          EDGE_PRODUCT_ID: ${{ secrets.EDGE_PRODUCT_ID }}
+          EDGE_CLIENT_ID: ${{ secrets.EDGE_CLIENT_ID }}
+          EDGE_API_KEY: ${{ secrets.EDGE_API_KEY }}
+        run: |
+          # A store is enabled only when its *whole* set is present. A partial
+          # set is reported by name, so a typo in one secret reads as "you are
+          # missing CWS_PUBLISHER_ID" rather than a mid-release curl failure.
+          report() {
+            store="$1"; shift
+            missing=''
+            for name in "$@"; do
+              [ -n "$(printenv "$name" || true)" ] || missing="$missing $name"
+            done
+
+            if [ -z "$missing" ]; then
+              echo "$store=true" >> "$GITHUB_OUTPUT"
+              echo "$store: configured"
+              return
+            fi
+
+            echo "$store=false" >> "$GITHUB_OUTPUT"
+            echo "$store: skipping — missing$missing (see store/PUBLISHING.md)"
+          }
+
+          report chrome CWS_CLIENT_ID CWS_CLIENT_SECRET CWS_REFRESH_TOKEN CWS_PUBLISHER_ID CWS_EXTENSION_ID
+          report firefox AMO_JWT_ISSUER AMO_JWT_SECRET
+          report edge EDGE_PRODUCT_ID EDGE_CLIENT_ID EDGE_API_KEY
+
+  chrome:
+    name: Chrome Web Store
+    needs: [package, preflight]
+    if: needs.preflight.outputs.chrome == 'true' && !inputs.dry_run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-${{ needs.package.outputs.version }}
+
+      # Chrome Web Store API v2. The refresh token is long-lived; it is minted
+      # once against the `chromewebstore` scope (store/PUBLISHING.md walks it).
+      - name: Upload and publish
+        env:
+          CLIENT_ID: ${{ secrets.CWS_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CWS_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.CWS_REFRESH_TOKEN }}
+          PUBLISHER_ID: ${{ secrets.CWS_PUBLISHER_ID }}
+          EXTENSION_ID: ${{ secrets.CWS_EXTENSION_ID }}
+          VERSION: ${{ needs.package.outputs.version }}
+        run: |
+          set -euo pipefail
+
+          token="$(curl -sS -f -X POST https://oauth2.googleapis.com/token \
+            -d "client_id=$CLIENT_ID" \
+            -d "client_secret=$CLIENT_SECRET" \
+            -d "refresh_token=$REFRESH_TOKEN" \
+            -d grant_type=refresh_token | node -p 'JSON.parse(require("fs").readFileSync(0,"utf8")).access_token')"
+
+          base=https://chromewebstore.googleapis.com
+          item="publishers/$PUBLISHER_ID/items/$EXTENSION_ID"
+
+          echo "Uploading bsky-not-blocked-chrome-$VERSION.zip"
+          curl -sS -f -X POST -H "Authorization: Bearer $token" \
+            -T "bsky-not-blocked-chrome-$VERSION.zip" \
+            "$base/upload/v2/$item:upload" | tee upload.json
+
+          # The upload succeeds at the HTTP layer even when the package itself is
+          # rejected, so the state has to be read out of the body.
+          node -e '
+            const r = JSON.parse(require("fs").readFileSync("upload.json", "utf8"));
+            const state = r.uploadState ?? r.upload_state;
+            if (state && state !== "SUCCESS") {
+              console.error(JSON.stringify(r, null, 2));
+              process.exit(1);
+            }
+          '
+
+          curl -sS -f -X POST -H "Authorization: Bearer $token" -H 'Content-Length: 0' \
+            "$base/v2/$item:publish"
+
+  firefox:
+    name: Firefox Add-ons (AMO)
+    needs: [package, preflight]
+    if: needs.preflight.outputs.firefox == 'true' && !inputs.dry_run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      # web-ext talks to the AMO signing API directly. `--channel=listed` submits
+      # the version for public review; AMO reviews Manifest V3 extensions by hand,
+      # so this returns before the version is live.
+      - name: Sign and submit
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.AMO_JWT_ISSUER }}
+          WEB_EXT_API_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+        run: npx web-ext sign --source-dir=dist/firefox --channel=listed --upload-source-code=dist/firefox
+
+  edge:
+    name: Microsoft Edge Add-ons
+    needs: [package, preflight]
+    if: needs.preflight.outputs.edge == 'true' && !inputs.dry_run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-${{ needs.package.outputs.version }}
+
+      # Edge Add-ons Update API v1.1. The older OAuth2 flow (v1) was retired on
+      # 2024-12-31; v1.1 authenticates with an API key plus client ID header and
+      # mints no token. Edge accepts the Chrome zip unchanged.
+      - name: Upload package and publish submission
+        env:
+          PRODUCT_ID: ${{ secrets.EDGE_PRODUCT_ID }}
+          CLIENT_ID: ${{ secrets.EDGE_CLIENT_ID }}
+          API_KEY: ${{ secrets.EDGE_API_KEY }}
+          VERSION: ${{ needs.package.outputs.version }}
+        run: |
+          set -euo pipefail
+          base="https://api.addons.microsoftedge.microsoft.com/v1/products/$PRODUCT_ID/submissions"
+          auth=(-H "Authorization: ApiKey $API_KEY" -H "X-ClientID: $CLIENT_ID")
+
+          operation="$(curl -sS -f -X POST "${auth[@]}" \
+            -H 'Content-Type: application/zip' \
+            -T "bsky-not-blocked-chrome-$VERSION.zip" \
+            -D - -o /dev/null "$base/draft/package" \
+            | tr -d '\r' | awk 'tolower($1) == "location:" { print $2 }')"
+
+          [ -n "$operation" ] || { echo '::error::Edge upload returned no operation id'; exit 1; }
+
+          # Both the upload and the publish are asynchronous: the POST only queues
+          # the work, so each is polled to a terminal state. Without this a
+          # rejected package would look like a successful release.
+          poll() {
+            local url="$1" label="$2" status
+            for _ in $(seq 60); do
+              status="$(curl -sS -f "${auth[@]}" "$url")"
+              case "$(node -p 'JSON.parse(require("fs").readFileSync(0,"utf8")).status' <<<"$status")" in
+                Succeeded) echo "$label: succeeded"; return 0 ;;
+                Failed)    echo "::error::$label failed"; echo "$status"; return 1 ;;
+              esac
+              sleep 10
+            done
+            echo "::error::$label timed out after 10 minutes"
+            return 1
+          }
+
+          poll "$base/draft/package/operations/$operation" 'package upload'
+
+          publish="$(curl -sS -f -X POST "${auth[@]}" -H 'Content-Length: 0' \
+            -D - -o /dev/null "$base" | tr -d '\r' | awk 'tolower($1) == "location:" { print $2 }')"
+
+          poll "$base/operations/$publish" 'submission publish'

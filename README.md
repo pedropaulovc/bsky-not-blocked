@@ -1,5 +1,8 @@
 # Bluesky: Not Blocked
 
+[![CI](https://github.com/pedropaulovc/bsky-not-blocked/actions/workflows/ci.yml/badge.svg)](https://github.com/pedropaulovc/bsky-not-blocked/actions/workflows/ci.yml)
+[![Premise and browsers](https://github.com/pedropaulovc/bsky-not-blocked/actions/workflows/premise.yml/badge.svg)](https://github.com/pedropaulovc/bsky-not-blocked/actions/workflows/premise.yml)
+
 A Firefox and Chromium extension that restores Bluesky posts hidden from you only because two **other** accounts block each other.
 
 Bluesky applies blocks publicly and symmetrically. If A blocks B, then A's quote of B and B's reply to A disappear for *everyone* — including people neither account has blocked. Threads end up full of "Blocked" placeholders and silent gaps that have nothing to do with you.
@@ -18,6 +21,13 @@ The extension patches the JSON coming back from Bluesky's API before the app ren
 | A blocked reply in a thread | Only with **Recover hidden replies** on — see below |
 
 ## Install
+
+Not yet on the Chrome Web Store, Firefox Add-ons or Edge Add-ons — each store
+needs a developer account and a first submission made by hand. The release
+pipeline and listing copy are ready; see [`store/PUBLISHING.md`](store/PUBLISHING.md).
+
+Until then, build it yourself. Every push also attaches both zips to its
+[CI run](https://github.com/pedropaulovc/bsky-not-blocked/actions/workflows/ci.yml).
 
 ```sh
 git clone https://github.com/pedropaulovc/bsky-not-blocked
@@ -83,7 +93,15 @@ npm run test:e2e          # loads the built extension into Chrome, hits the real
 npm run test:e2e:firefox  # the same, in Firefox via geckodriver
 npm run lint:firefox      # web-ext lint on the Firefox build
 npm run record-fixtures   # refresh fixtures after an API change
+npm run store:screenshots # before/after listing shots at both store sizes
 ```
+
+CI runs the offline suite and `web-ext lint` on every push and pull request, and
+nothing there touches the network beyond npm — a red run is always a real
+regression. The checks that depend on live Bluesky data (`test:live` and both
+browser suites) run weekly in [`premise.yml`](.github/workflows/premise.yml)
+instead, so an upstream outage cannot redden a pull request. That workflow's
+header explains how to tell fixture rot from an actual break.
 
 Building needs Node.js but no project dependencies. The tests beyond `npm test` need `npm i`, and the browser runs need a browser to drive:
 
