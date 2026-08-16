@@ -28,11 +28,15 @@ const json = (body, status = 200) =>
 export function mockNetwork({ payloads = {}, posts = fixture('posts.json'), links = fixture('constellation.json') } = {}) {
   const calls = [];
 
+  const inits = [];
+
   return {
     calls,
-    async fetch(input) {
+    inits,
+    async fetch(input, init) {
       const url = new URL(typeof input === 'string' ? input : input.url);
       calls.push(url.toString());
+      inits.push(init);
 
       if (url.pathname.endsWith('/xrpc/app.bsky.feed.getPosts')) {
         const wanted = url.searchParams.getAll('uris');
@@ -80,7 +84,9 @@ export function loadInterceptor(networkFetch, { config } = {}) {
     Response,
     Headers,
     TextEncoder,
+    AbortController,
     setTimeout,
+    clearTimeout,
     queueMicrotask,
   };
   sandbox.globalThis = sandbox;

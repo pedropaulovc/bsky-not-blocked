@@ -35,6 +35,8 @@
   const GET_POSTS_LIMIT = 25;
   // A restored post can itself quote a blocked post; re-run until the payload settles.
   const MAX_PASSES = 3;
+  // Deadline for our own lookups, which hold the app's response open.
+  const REQUEST_TIMEOUT_MS = 6000;
   // Ceilings on the extra work a single response can trigger.
   const MAX_DEEP_TARGETS = 24;
   const DEEP_CONCURRENCY = 4;
@@ -60,11 +62,18 @@
 
   // ---------------------------------------------------------------- config
 
+  // Any script on the page can post a matching message, so copy known boolean
+  // keys rather than assigning the payload -- a `__proto__` key survives
+  // structured clone as an own property and would hit the prototype setter.
   window.addEventListener('message', (event) => {
     if (event.source !== window) return;
     const data = event.data;
     if (!data || data.source !== 'bsky-not-blocked' || data.type !== 'config') return;
-    Object.assign(config, data.config);
+    const next = data.config;
+    if (!next || typeof next !== 'object') return;
+    for (const key of ['enabled', 'deepRecovery', 'debug']) {
+      if (typeof next[key] === 'boolean') config[key] = next[key];
+    }
     log('config', config);
   });
 
@@ -167,10 +176,26 @@
 
   // ------------------------------------------------------------- resolving
 
+  /*
+   * Every lookup needs a deadline. The app's own XRPC response is held open
+   * while we resolve, so a stalled AppView would hang the request rather than
+   * fail it -- and the fail-open catch cannot rescue a promise that never
+   * settles. AbortController rather than AbortSignal.timeout, which needs a
+   * newer Chrome than the manifest asks for.
+   */
   async function fetchJson(url) {
-    const res = await originalFetch(url, { headers: { accept: 'application/json' } });
-    if (!res.ok) throw new Error(`${res.status} ${url}`);
-    return res.json();
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    try {
+      const res = await originalFetch(url, {
+        headers: { accept: 'application/json' },
+        signal: controller.signal,
+      });
+      if (!res.ok) throw new Error(`${res.status} ${url}`);
+      return await res.json();
+    } finally {
+      clearTimeout(timer);
+    }
   }
 
   /**

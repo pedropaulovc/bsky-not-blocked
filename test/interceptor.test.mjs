@@ -124,6 +124,32 @@ test('unrelated endpoints are never parsed or rewritten', async () => {
   assert.equal(net.calls.length, 1, '"blockedBy" must not trigger a resolve');
 });
 
+test('resolver lookups carry a deadline', async () => {
+  // The app's own response is held open while we resolve, so a lookup with no
+  // deadline would hang the request rather than fail it — and fail-open cannot
+  // rescue a promise that never settles.
+  const net = mockNetwork({ payloads: { [THREAD_V2]: fixture('thread-v2-blocked-quote.json') } });
+  const app = loadInterceptor(net.fetch);
+
+  await app.call(THREAD_V2, '?anchor=x');
+  const lookup = net.calls.findIndex((url) => url.includes('getPosts'));
+
+  assert.ok(lookup >= 0, 'expected a resolver lookup');
+  assert.ok(net.inits[lookup]?.signal, 'resolver fetch must pass an abort signal');
+});
+
+test('an aborted resolver leaves the response untouched', async () => {
+  const original = fixture('thread-v2-blocked-quote.json');
+  const net = mockNetwork({ payloads: { [THREAD_V2]: original } });
+  const app = loadInterceptor(async (input, init) => {
+    const url = new URL(typeof input === 'string' ? input : input.url);
+    if (url.pathname.endsWith('getPosts')) throw new DOMException('aborted', 'AbortError');
+    return net.fetch(input, init);
+  });
+
+  assert.deepEqual(await app.call(THREAD_V2, '?anchor=x'), original);
+});
+
 test('a failing resolver leaves the response untouched', async () => {
   const original = fixture('thread-v2-blocked-quote.json');
   const net = mockNetwork({ payloads: { [THREAD_V2]: original } });

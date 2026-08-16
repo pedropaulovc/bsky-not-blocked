@@ -18,7 +18,11 @@ const APPVIEW = 'https://public.api.bsky.app/xrpc';
 const QUOTING = 'at://did:plc:klhtmrnregub7we7h6jwiljm/app.bsky.feed.post/3mt5jmqs4n22n';
 const QUOTED = 'at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y';
 
-const get = (method, query) => fetch(`${APPVIEW}/${method}?${query}`).then((r) => r.json());
+// These tests talk to live services, so every request carries a deadline —
+// otherwise a stalled AppView turns `npm run test:live` into a hang.
+const TIMEOUT_MS = 15_000;
+const getJson = (url) => fetch(url, { signal: AbortSignal.timeout(TIMEOUT_MS) }).then((r) => r.json());
+const get = (method, query) => getJson(`${APPVIEW}/${method}?${query}`);
 
 test('the AppView still hides the quote from third parties', { skip: !LIVE }, async () => {
   const thread = await get('app.bsky.unspecced.getPostThreadV2', `anchor=${encodeURIComponent(QUOTING)}`);
@@ -50,7 +54,7 @@ test('the AppView drops blocked replies without leaving a stub', { skip: !LIVE }
 test('the backlink index can still name the dropped reply', { skip: !LIVE }, async () => {
   const target = 'at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22';
   const query = `target=${encodeURIComponent(target)}&collection=app.bsky.feed.post&path=.reply.parent.uri`;
-  const data = await fetch(`https://constellation.microcosm.blue/links?${query}`).then((r) => r.json());
+  const data = await getJson(`https://constellation.microcosm.blue/links?${query}`);
 
   assert.ok(data.linking_records?.length > 0, 'backlink index returned nothing — deep recovery is dead');
 });

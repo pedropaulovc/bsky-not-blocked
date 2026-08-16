@@ -85,7 +85,14 @@ npm run lint:firefox      # web-ext lint on the Firefox build
 npm run record-fixtures   # refresh fixtures after an API change
 ```
 
-Building needs nothing installed. The tests beyond `npm test` need `npm i`, and the Firefox run additionally needs `geckodriver` plus a Firefox binary — point at them with `GECKODRIVER=` and `FIREFOX_BIN=` if they are not on `PATH`.
+Building needs nothing installed. The tests beyond `npm test` need `npm i`, and the browser runs need a browser to drive:
+
+```sh
+npm i                          # devDependencies
+npx playwright install chromium # the Chrome binary — installing the package does not
+```
+
+The Firefox run additionally needs `geckodriver` and a Firefox binary — point at them with `GECKODRIVER=` and `FIREFOX_BIN=` if they are not on `PATH`.
 
 `npm test` loads `src/interceptor.js` itself into a sandboxed page-like context, so it exercises the file that ships rather than a copy of its logic.
 
