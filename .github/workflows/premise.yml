@@ -86,5 +86,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # The Chrome job gets Xvfb via `playwright install --with-deps`; this one
+      # has no equivalent, so it asks for it rather than trusting the image.
+      - name: Install Xvfb
+        run: sudo apt-get update && sudo apt-get install -y xvfb
+
       - name: End-to-end run
         run: xvfb-run --auto-servernum npm run test:e2e:firefox

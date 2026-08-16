@@ -36,7 +36,7 @@ const SIZES = [
 if (!fs.existsSync(EXTENSION)) throw new Error('run `npm run build` first');
 fs.mkdirSync(OUT, { recursive: true });
 
-async function shoot({ width, height }, { url, expect }, { withExtension, file }) {
+async function shoot({ width, height }, { url, expect, absent }, { withExtension, file }) {
   const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'bsky-shots-'));
   const args = ['--no-sandbox', `--window-size=${width},${height}`];
   if (withExtension) {
@@ -53,13 +53,23 @@ async function shoot({ width, height }, { url, expect }, { withExtension, file }
     const page = await context.newPage();
     await page.goto(url, { waitUntil: 'domcontentloaded' });
 
-    // Wait for the thing the shot is meant to show, rather than a fixed delay:
-    // with the extension, the restored text; without it, the placeholder. Either
-    // way the page is past its skeleton loaders by the time it is captured.
-    const needle = withExtension ? expect[0] : 'Blocked';
-    await page
-      .waitForFunction((text) => document.body.innerText.includes(text), needle, { timeout: 30_000 })
-      .catch(() => console.warn(`  ! "${needle}" never appeared — check the scenario is still live`));
+    // Wait for the thing the shot is meant to show rather than a fixed delay, so
+    // the capture never lands on a skeleton loader.
+    //
+    // The "after" shot has an obvious marker: the restored text. The "before"
+    // shot only has one when the scenario leaves a visible placeholder — a
+    // blocked *quote* becomes a grey "Blocked" card, but a blocked *parent* is
+    // dropped from the thread with nothing standing in for it. There is no
+    // positive marker for an absence, so those wait for the page to finish
+    // painting instead.
+    const marker = withExtension ? expect[0] : absent;
+    const settled = marker
+      ? page.waitForFunction((text) => document.body.innerText.includes(text), marker, { timeout: 30_000 })
+      : page.waitForFunction(() => document.body.innerText.length > 500, null, { timeout: 30_000 });
+
+    await settled.catch(() =>
+      console.warn(`  ! ${marker ? `"${marker}" never appeared` : 'page never settled'} — is the scenario still live?`),
+    );
 
     // Bluesky anchors the scroll on the focused post, which can leave the
     // interesting part just above the fold.
