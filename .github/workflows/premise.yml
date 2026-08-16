@@ -63,9 +63,9 @@ jobs:
 
       - run: npx playwright install --with-deps chromium
 
-      # Extensions load only in a headed browser, so the run needs a display.
+      # Both browser suites run headless, so no Xvfb and no display here.
       - name: End-to-end run
-        run: xvfb-run --auto-servernum npm run test:e2e
+        run: npm run test:e2e
 
   firefox:
     name: end-to-end (Firefox)
@@ -92,10 +92,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      # The Chrome job gets Xvfb via `playwright install --with-deps`; this one
-      # has no equivalent, so it asks for it rather than trusting the image.
-      - name: Install Xvfb
-        run: sudo apt-get update && sudo apt-get install -y xvfb
-
       - name: End-to-end run
-        run: xvfb-run --auto-servernum npm run test:e2e:firefox
+        run: npm run test:e2e:firefox

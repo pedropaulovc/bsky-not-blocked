@@ -12,7 +12,7 @@
  * bundle. That ordering is the load-bearing assumption of the whole design, and
  * it is invisible to the unit tests, so it gets a real browser.
  *
- * Requires Playwright and a display:
+ * Runs headless, so it needs no display:
  *   npm i -D playwright && npx playwright install chromium
  *   node scripts/build.mjs && node test/e2e.mjs
  */
@@ -50,7 +50,13 @@ const check = (name, ok, detail = '') => {
 
 const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'bsky-not-blocked-'));
 const context = await chromium.launchPersistentContext(profile, {
-  headless: false,
+  // `channel: 'chromium'` matters as much as `headless` here. Playwright's
+  // default headless Chromium is `chromium-headless-shell`, a stripped binary
+  // with no extension support at all — the interceptor simply never installs and
+  // every check times out. The channel selects the full browser, whose current
+  // headless mode is the real thing and loads extensions normally.
+  channel: 'chromium',
+  headless: true,
   args: [`--disable-extensions-except=${EXTENSION}`, `--load-extension=${EXTENSION}`, '--no-sandbox'],
 });
 
