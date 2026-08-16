@@ -109,10 +109,19 @@ try {
   await popup.goto(POPUP);
   check('popup page loads', await popup.locator('#enabled').isVisible());
 
+  // The change handlers are attached only after the popup has read storage, and
+  // the click itself does not wait for the write — so bracket both.
+  await popup.waitForFunction(() => document.body.dataset.ready === 'true', null, { timeout: 10_000 });
   const before = await popup.evaluate(() => chrome.storage.local.get({ deepRecovery: false }));
   await popup.locator('#deepRecovery').click();
-  const after = await popup.evaluate(() => chrome.storage.local.get({ deepRecovery: false }));
-  check('toggling a setting persists it', before.deepRecovery === false && after.deepRecovery === true);
+  const persisted = await popup
+    .waitForFunction(
+      async () => (await chrome.storage.local.get({ deepRecovery: false })).deepRecovery === true,
+      null,
+      { timeout: 10_000 },
+    )
+    .then(() => true, () => false);
+  check('toggling a setting persists it', before.deepRecovery === false && persisted);
   await popup.close();
 
   // Deep recovery is now on, so the opt-in path can be exercised for real. This

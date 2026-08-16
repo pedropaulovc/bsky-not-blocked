@@ -85,16 +85,18 @@ npm run lint:firefox      # web-ext lint on the Firefox build
 npm run record-fixtures   # refresh fixtures after an API change
 ```
 
-Building needs nothing installed. The tests beyond `npm test` need `npm i`, and the browser runs need a browser to drive:
+Building needs Node.js but no project dependencies. The tests beyond `npm test` need `npm i`, and the browser runs need a browser to drive:
 
 ```sh
-npm i                          # devDependencies
-npx playwright install chromium # the Chrome binary — installing the package does not
+npm i                           # devDependencies
+npx playwright install chromium # installing the npm package does not install Chromium
 ```
 
 The Firefox run additionally needs `geckodriver` and a Firefox binary — point at them with `GECKODRIVER=` and `FIREFOX_BIN=` if they are not on `PATH`.
 
 `npm test` loads `src/interceptor.js` itself into a sandboxed page-like context, so it exercises the file that ships rather than a copy of its logic.
+
+`record-fixtures` captures live threads, replays them through the real interceptor to learn exactly which lookups it makes, then rewrites DIDs, handles, record keys, CIDs and post text to synthetic values before writing anything to disk. The stored fixtures therefore hold no one's posts — a committed file outlives the deletion of the post it came from, which the live and end-to-end runs avoid by fetching their threads at run time instead.
 
 ## License
 

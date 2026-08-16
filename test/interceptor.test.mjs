@@ -6,9 +6,21 @@ const THREAD_V2 = 'app.bsky.unspecced.getPostThreadV2';
 const THREAD_V1 = 'app.bsky.feed.getPostThread';
 const AUTHOR_FEED = 'app.bsky.feed.getAuthorFeed';
 
-const QUOTED = 'at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt3tm576mk2y';
-const BLOCKED_PARENT = 'at://did:plc:zntngpowgd6rorjt3haywj36/app.bsky.feed.post/3mt5l6lu5ec22';
-const HIDDEN_REPLY = 'at://did:plc:v4sghlfldhg56z6ckpnw2kvj/app.bsky.feed.post/3mt5n422h422o';
+/*
+ * The fixtures are anonymized recordings, so the identities in them are
+ * synthetic and would be meaningless spelled out here. Each test reads the URI
+ * it cares about out of the stub it is meant to repair, and checks the restored
+ * content against posts.json — the record of what getPosts actually returned.
+ * That keeps the assertions about plumbing rather than about literal strings,
+ * and survives re-recording.
+ */
+const POSTS = fixture('posts.json');
+
+const QUOTED = fixture('thread-v2-blocked-quote.json').thread[0].value.post.embed.record.uri;
+const BLOCKED_PARENT = fixture('thread-v1-blocked-parent.json').thread.parent.uri;
+const HIDDEN_REPLY = fixture('constellation.json')[
+  fixture('thread-v2-hidden-reply.json').thread[0].uri
+][0];
 
 const flat = (payload) => payload.thread.map((item) => [item.depth, item.value.$type, item.uri]);
 
@@ -25,7 +37,7 @@ test('restores a blocked quote embed in a v2 thread', async () => {
   assert.equal(app.stats.restoredQuotes, 1);
 });
 
-test('the restored quote carries the real author and text', async () => {
+test('the restored quote carries its author and text', async () => {
   const net = mockNetwork({ payloads: { [THREAD_V2]: fixture('thread-v2-blocked-quote.json') } });
   const app = loadInterceptor(net.fetch);
 
@@ -34,8 +46,9 @@ test('the restored quote carries the real author and text', async () => {
 
   assert.equal(quote.$type, 'app.bsky.embed.record#viewRecord');
   assert.equal(quote.uri, QUOTED);
-  assert.equal(quote.author.handle, 'skity.bsky.social');
-  assert.match(quote.value.text, /Coding is largely solved/);
+  assert.equal(quote.author.handle, POSTS[QUOTED].author.handle);
+  assert.equal(quote.value.text, POSTS[QUOTED].record.text);
+  assert.ok(quote.value.text.length > 0, 'the restored quote must carry its text');
   assert.ok(Array.isArray(quote.embeds), 'viewRecord.embeds must be an array');
 });
 
@@ -48,8 +61,8 @@ test('restores a blocked parent in a v2 thread, keeping its depth', async () => 
 
   assert.equal(parent.value.$type, 'app.bsky.unspecced.defs#threadItemPost');
   assert.equal(parent.uri, BLOCKED_PARENT);
-  assert.equal(parent.value.post.author.handle, 'aly.codes');
-  assert.match(parent.value.post.record.text, /extremely normal analogy/);
+  assert.equal(parent.value.post.author.handle, POSTS[BLOCKED_PARENT].author.handle);
+  assert.equal(parent.value.post.record.text, POSTS[BLOCKED_PARENT].record.text);
   // threadItemPost has required fields the renderer reads unconditionally.
   for (const key of ['moreParents', 'moreReplies', 'opThread', 'hiddenByThreadgate', 'mutedByViewer']) {
     assert.ok(key in parent.value, `threadItemPost is missing ${key}`);
@@ -63,7 +76,7 @@ test('v1 threads get a threadViewPost wrapper, not a bare postView', async () =>
   const payload = await app.call(THREAD_V1, '?uri=x');
   assert.equal(payload.thread.parent.$type, 'app.bsky.feed.defs#threadViewPost');
   assert.equal(payload.thread.parent.post.uri, BLOCKED_PARENT);
-  assert.equal(payload.thread.parent.post.author.handle, 'aly.codes');
+  assert.equal(payload.thread.parent.post.author.handle, POSTS[BLOCKED_PARENT].author.handle);
 });
 
 test('feed replies get a bare postView, not a threadViewPost', async () => {

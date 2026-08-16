@@ -27,7 +27,9 @@ const { version } = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 
 const XPI = path.join(ROOT, 'dist', `bsky-not-blocked-firefox-${version}.zip`);
 
 if (!fs.existsSync(XPI)) throw new Error('run `node scripts/build.mjs firefox` first');
-if (process.env.GECKODRIVER) process.env.PATH = `${path.dirname(process.env.GECKODRIVER)}:${process.env.PATH}`;
+if (process.env.GECKODRIVER) {
+  process.env.PATH = `${path.dirname(process.env.GECKODRIVER)}${path.delimiter}${process.env.PATH}`;
+}
 
 const checks = [];
 const check = (name, ok, detail = '') => {

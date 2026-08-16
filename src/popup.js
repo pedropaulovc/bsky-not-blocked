@@ -9,4 +9,7 @@ Promise.resolve(api.storage.local.get(DEFAULTS)).then((config) => {
     input.checked = Boolean(config[key]);
     input.addEventListener('change', () => api.storage.local.set({ [key]: input.checked }));
   }
+  // Until this lands, the boxes show defaults and nothing is wired up. Marks the
+  // point where a click actually does something — which the e2e run waits on.
+  document.body.dataset.ready = 'true';
 });
