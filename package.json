@@ -13,7 +13,8 @@
     "test:e2e:firefox": "node scripts/build.mjs firefox && node test/e2e-firefox.mjs",
     "lint:firefox": "node scripts/build.mjs firefox && web-ext lint --source-dir=dist/firefox --self-hosted",
     "record-fixtures": "node scripts/record-fixtures.mjs",
-    "icons": "bash scripts/make-icons.sh"
+    "icons": "bash scripts/make-icons.sh",
+    "store:screenshots": "node scripts/build.mjs chrome && node scripts/store-screenshots.mjs"
   },
   "devDependencies": {
     "playwright": "^1.62.1",

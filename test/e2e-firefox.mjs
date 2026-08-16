@@ -38,6 +38,11 @@ const check = (name, ok, detail = '') => {
 };
 
 const options = new firefox.Options().addArguments('-headless');
+// Toggling deep recovery asks for the `browsingActivity` data permission, which
+// normally raises a doorhanger no WebDriver session can answer. This pref grants
+// optional permissions without prompting, so the run exercises the code path
+// rather than hanging on chrome UI it cannot reach.
+options.setPreference('extensions.webextOptionalPermissionPrompts', false);
 if (process.env.FIREFOX_BIN) options.setBinary(process.env.FIREFOX_BIN);
 
 const driver = await new Builder().forBrowser('firefox').setFirefoxOptions(options).build();

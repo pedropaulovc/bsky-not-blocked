@@ -22,5 +22,8 @@ export const SCENARIOS = [
     // everyone. It also carries a blocked quote of its own, which exercises the
     // second pass of the resolve loop.
     expect: ['@aly.codes', 'extremely normal analogy'],
+    // A dropped parent renders as a "Post blocked" banner above the anchor,
+    // worded differently from the "Blocked" card a hidden quote leaves behind.
+    absent: 'Post blocked',
   },
 ];

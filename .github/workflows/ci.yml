@@ -1,0 +1,68 @@
+# Everything here is deterministic: the offline suite runs the real
+# src/interceptor.js against recorded fixtures, and the lint and build steps
+# touch nothing outside the repo. Nothing in this workflow reaches the network
+# beyond the npm registry, so a red run always means a real regression.
+#
+# The checks that *do* depend on live Bluesky data live in premise.yml, on a
+# schedule, so an outage upstream can never redden a pull request.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['22', '24']
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - run: npm ci
+
+      - name: Offline tests
+        run: npm test
+
+      - name: web-ext lint (Firefox packaging rules)
+        run: npm run lint:firefox
+
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      # Both zips are attached to every run, so a reviewer can load the exact
+      # artifact a commit produces without building it themselves.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extensions
+          path: dist/*.zip
+          if-no-files-found: error
